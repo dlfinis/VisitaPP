@@ -10,7 +10,7 @@
         <activity
             android:name="com.fisei.visitapp.app.SplashActivity"
             android:label="@string/app_name"
-            android:theme="@android:style/Theme.Black.NoTitleBar">
+            android:theme="@android:style/Theme.Black.NoTitleBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,8 +26,12 @@
             android:label="@string/title_activity_home" >
         </activity>
         <activity
-            android:name=".PracticeActivity"
+            android:name="com.fisei.visitapp.app.PracticeActivity"
             android:label="@string/title_activity_practica" >
+        </activity>
+        <activity
+            android:name="com.fisei.visitapp.app.TestActivity"
+            android:label="@string/title_activity_test" >
         </activity>
     </application>
 

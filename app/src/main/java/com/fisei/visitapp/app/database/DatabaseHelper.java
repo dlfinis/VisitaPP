@@ -29,16 +29,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     private RuntimeExceptionDao<Test,Integer> testRuntimeDAO=null;
 
 
-    public Dao<Test, Integer> getTestDAO(Class<Test> testClass) throws SQLException {
-        if(testDAO==null) testDAO=getTestDAO(Test.class);
-        return testDAO;
-    }
 
-
-    public RuntimeExceptionDao<Test, Integer> getTestRuntimeDAO(Class<Test> testClass) throws SQLException{
-        if(testRuntimeDAO==null) testRuntimeDAO = getTestRuntimeDAO(Test.class);
-        return testRuntimeDAO;
-    }
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_PATH+DATABASE_NAME, null, DATABASE_VERSION, R.raw.ormlite_config);
@@ -103,10 +94,22 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
         }
     }
 
+
     @Override
     public void close() {
         super.close();
         testDAO=null;
         testRuntimeDAO=null;
+    }
+
+    public Dao<Test, Integer> getTestDAO() throws SQLException {
+        if(testDAO==null) testDAO=getDao(Test.class);
+        return testDAO;
+    }
+
+
+    public RuntimeExceptionDao<Test, Integer> getTestRuntimeDAO() throws SQLException{
+        if(testRuntimeDAO==null) testRuntimeDAO = getDao(Test.class);
+        return testRuntimeDAO;
     }
 }

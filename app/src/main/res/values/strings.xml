@@ -22,5 +22,6 @@
     <string name="visit">Visita</string>
     <string name="practices">Practica</string>
     <string name="title_activity_practica">PracticaActivity</string>
+    <string name="title_activity_test">TestActivity</string>
 
 </resources>

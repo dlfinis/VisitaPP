@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
+import com.fisei.visitapp.app.entity.Test;
 
 public class SplashActivity extends Activity {
     // Splash screen timer
@@ -25,12 +26,12 @@ public class SplashActivity extends Activity {
 
             @Override
             public void run() {
-// This method will be executed once the timer is over
-// Start your app main activity
-                Intent i = new Intent(SplashActivity.this, PracticeActivity.class);
+                // This method will be executed once the timer is over
+                // Start your app main activity
+                Intent i = new Intent(SplashActivity.this, TestActivity.class);
                 startActivity(i);
 
-// close this activity
+                // close this activity
                 finish();
             }
         }, SPLASH_TIME_OUT);
