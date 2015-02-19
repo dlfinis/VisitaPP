@@ -1,0 +1,22 @@
+#
+# generated on 2015/02/19 03:52:37
+#
+# --table-start--
+dataClass=com.fisei.visitapp.app.entity.Test
+tableName=test
+# --table-fields-start--
+# --field-start--
+fieldName=pk
+generatedId=true
+# --field-end--
+# --field-start--
+fieldName=value
+indexName=test_value_idx
+# --field-end--
+# --field-start--
+fieldName=image
+dataPersister=BYTE_ARRAY
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:gravity="center"
+              android:paddingLeft="35dp"
+              android:paddingRight="35dp"
+        >
+
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            >
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/id"
+                android:id="@+id/txtID"
+                android:textStyle="bold"
+                android:textSize="25sp"
+                />
+
+        <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:ems="15"
+                android:id="@+id/editText"
+                android:backgroundTint="#ff538aff"
+                android:backgroundTintMode="src_atop"
+                />
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:paddingBottom = "@dimen/padding_Large"
+            >
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/password"
+                android:id="@+id/txtPassword"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                />
+
+        <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:ems="10"
+                android:id="@+id/editText2"
+                android:backgroundTint="#ff538aff"
+                android:backgroundTintMode="src_atop"
+                />
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:orientation = "horizontal"
+            android:layout_width = "fill_parent"
+            android:layout_height = "wrap_content"
+            android:gravity = "fill"
+            >
+
+        <Button
+                android:layout_width = "fill_parent"
+                android:layout_height = "wrap_content"
+                android:text = "@string/accept"
+                android:id = "@+id/btnAceptar"
+                android:layout_weight = "1"
+                android:enabled = "true"
+                android:background = "@color/button_material_light"
+                />
+
+        <Button
+                android:layout_width = "fill_parent"
+                android:layout_height = "wrap_content"
+                android:text = "@string/cancel"
+                android:id = "@+id/btnCancelar"
+                android:layout_weight = "1"
+                android:background = "@color/button_material_dark"
+                />
+    </LinearLayout>
+</LinearLayout>

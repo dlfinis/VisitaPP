@@ -1,0 +1,27 @@
+<resources>
+
+	<!-- Base application theme. -->
+	<style name = "AppTheme" parent = "Theme.AppCompat.Light.DarkActionBar">
+		<!-- Customize your theme here. -->
+
+		<!-- colorPrimary is used for the default action bar background -->
+		<item name="colorPrimary">@color/blue_100</item>
+
+		<!-- colorPrimaryDark is used for the status bar -->
+		<item name="colorPrimaryDark">@color/blue_500</item>
+
+		<!-- colorAccent is used as the default value for colorControlActivated
+		which is used to tint widgets -->
+		<item name="colorAccent">@color/light_blue_A100</item>
+
+		<!-- You can also set colorControlNormal, colorControlActivated
+		colorControlHighlight & colorSwitchThumbNormal. -->
+	</style>
+	<color name="primary">@color/blue_100</color>
+	<color name="primary_dark">@color/blue_500</color>
+	<color name="accent">@color/light_blue_A100</color>
+
+	<color name="secondary">@color/orange_200</color>
+	<color name="secondary_dark">@color/yellow_A700</color>
+
+</resources>

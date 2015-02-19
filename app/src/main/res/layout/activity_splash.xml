@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="fill_parent"
+              android:background="@drawable/background_splash"
+              android:gravity="center_vertical"
+              android:weightSum="1"
+              android:paddingLeft="@dimen/padding_Large"
+              android:paddingRight="@dimen/padding_Large"
+        >
+
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/sig_name"
+            android:id="@+id/textView2"
+            android:textIsSelectable="false"
+            android:textSize="120sp"
+            android:textStyle="bold"
+            android:textColor="@color/accent"
+            android:layout_gravity="center"
+            android:layout_weight="0.31"
+            android:gravity="center"
+            />
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/system_name_1"
+            android:id="@+id/textView"
+            android:textColor="@color/primary"
+            android:lines="1"
+            android:textSize="@dimen/font_size_medium"
+            />
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/system_name_2"
+            android:id="@+id/textView3"
+            android:textColor="@color/secondary_dark"
+            android:textStyle="bold"
+            android:lines="3"
+            android:textSize="@dimen/font_size_medium"
+            />
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/fac_name"
+            android:id="@+id/textView4"
+            android:textColor="@color/primary"
+            android:lines="1"
+            android:textSize="@dimen/font_size_medium"
+            android:gravity="bottom"
+            android:layout_gravity="bottom|center_horizontal"
+            android:textStyle="bold"
+            android:layout_weight="0.32"
+            />
+
+</LinearLayout>
