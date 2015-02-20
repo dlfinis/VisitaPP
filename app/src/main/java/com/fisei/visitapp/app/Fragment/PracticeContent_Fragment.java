@@ -14,8 +14,8 @@ import android.widget.TextView;
  */
 public class PracticeContent_Fragment extends Fragment {
 
-    public static final String POSITION = "position";
-    int position = -1;
+    public static final String CODECC = "CCEstudiante";
+    String codeCC="0";
     
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -23,7 +23,7 @@ public class PracticeContent_Fragment extends Fragment {
     // TODO Auto-generated method stub
     // Comprobamos si se recupera de un estado anterior
         if (savedInstanceState != null){
-            position = savedInstanceState.getInt("position");
+            codeCC = savedInstanceState.getString("CCEstudiante");
         }
         return inflater.inflate(R.layout.fragment_practice_content, container, false);
     }
@@ -36,24 +36,24 @@ public class PracticeContent_Fragment extends Fragment {
         Bundle args = getArguments();
         if (args != null){
     
-    // Si tenemos argumentos, establecemos la posicion
-            updateContent(args.getInt(POSITION));
-        }else if(position != -1){
+    // Si tenemos argumentos, establecemos la posicion segun el codigo
+            updateContent(args.getString(CODECC));
+        }else if(!codeCC.equals("0")){
     
     // Si la variable de instancia es diferente a -1
     // quiere decir que nos hemos recuperado de un estado anterior
     // y actualizamos el contenido
-            updateContent(position);
+            updateContent(codeCC);
         }
     }
-    public void updateContent(int position){
+    public void updateContent(String codeCC){
 
     // Instanciamos el TextView y establecemos el contenido
         TextView tvContenido = (TextView)getActivity().findViewById(R.id.tvContenido);
-        tvContenido.setText(Content.description[position]);
+        tvContenido.setText("Alfa");
 
-    // Guardamos la posicion del elemento que estamos consultando
-        this.position = position;
+    // Guardamos el codigo del elemento que estamos consultando
+        this.codeCC=codeCC;
     }
 
     @Override
@@ -62,7 +62,7 @@ public class PracticeContent_Fragment extends Fragment {
         super.onSaveInstanceState(outState);
     // Guardamos el estado de la posicion del elemento
     // que estábamos consultando
-        outState.putInt(POSITION, position);
+        outState.putString(CODECC,codeCC);
     }
 
 }

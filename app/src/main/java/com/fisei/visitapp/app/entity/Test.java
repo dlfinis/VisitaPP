@@ -1,23 +1,20 @@
 package com.fisei.visitapp.app.entity;
 
-import com.j256.ormlite.field.DataType;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
-
-import java.io.Serializable;
 
 /**
  * Created by diegoztc on 19/02/15.
  */
 @DatabaseTable(tableName ="test")
-public class Test implements Serializable{
-    @DatabaseField(generatedId = true)
-    private int pk;
-    @DatabaseField(index=true,canBeNull = true)
+public class Test {
+    @DatabaseField(columnName = "pk",generatedId = true,allowGeneratedIdInsert = true)
+    private int pk=0;
+    @DatabaseField(defaultValue ="123" , canBeNull = true)
     private String value;
 
-    @DatabaseField(dataType = DataType.BYTE_ARRAY)
-    private byte[] image;
+    @DatabaseField
+    private String imageuri="NN";
 
 
     public Test(){}
@@ -29,10 +26,10 @@ public class Test implements Serializable{
 
     }
 
-    public Test(int pk,String value,byte[] imagen) {
+    public Test(int pk,String value,String imageuri) {
         this.pk = pk;
         this.value=value;
-        this.image=image;
+        this.imageuri = imageuri;
     }
 
 
@@ -52,11 +49,16 @@ public class Test implements Serializable{
         this.value = value;
     }
 
-    public byte[] getImage() {
-        return image;
+    public String getImage() {
+        return imageuri;
     }
 
-    public void setImage(byte[] image) {
-        this.image = image;
+    public void setImage(String imageUri) {
+        this.imageuri = imageUri;
+    }
+
+    @Override
+    public String toString() {
+        return pk+" / "+value+" / "+imageuri;
     }
 }

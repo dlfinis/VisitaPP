@@ -1,21 +1,48 @@
 #
-# generated on 2015/02/19 03:52:37
+# generated on 2015/02/19 09:55:59
 #
+# --table-start--
+dataClass=com.fisei.visitapp.app.entity.Estudiante
+tableName=lista_estudiantes
+# --table-fields-start--
+# --field-start--
+fieldName=CodEstudiante
+id=true
+# --field-end--
+# --field-start--
+fieldName=CCEstudiante
+# --field-end--
+# --field-start--
+fieldName=CodResponsable
+# --field-end--
+# --field-start--
+fieldName=CCResponsable
+# --field-end--
+# --field-start--
+fieldName=Nombre
+# --field-end--
+# --field-start--
+fieldName=Apellido
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
 # --table-start--
 dataClass=com.fisei.visitapp.app.entity.Test
 tableName=test
 # --table-fields-start--
 # --field-start--
 fieldName=pk
+columnName=pk
 generatedId=true
+allowGeneratedIdInsert=true
 # --field-end--
 # --field-start--
 fieldName=value
-indexName=test_value_idx
+defaultValue=123
 # --field-end--
 # --field-start--
-fieldName=image
-dataPersister=BYTE_ARRAY
+fieldName=imageuri
 # --field-end--
 # --table-fields-end--
 # --table-end--

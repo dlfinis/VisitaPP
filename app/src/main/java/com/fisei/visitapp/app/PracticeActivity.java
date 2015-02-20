@@ -6,13 +6,16 @@ import com.fisei.visitapp.app.Fragment.PracticeContent_Fragment;
 import com.fisei.visitapp.app.Fragment.PracticeList_Fragment;
 
 
-public class PracticeActivity extends FragmentActivity implements PracticeList_Fragment.onTitleSelectedListener
+public class PracticeActivity extends FragmentActivity implements PracticeList_Fragment.onEstudianteSelectedListener
 {
-
+    String ccResponsable="0705756187";
+    Bundle args = new Bundle();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_practice);
+
+        args.putString("ccResponsable",ccResponsable);
         // Comprobamos si estamos usando la version con
         // con el FrameLayout
         if (findViewById(R.id.fragment_container) != null) {
@@ -27,24 +30,26 @@ public class PracticeActivity extends FragmentActivity implements PracticeList_F
         }
     }
     @Override
-    public void onTitleSelected(int position) {
-// TODO Auto-generated method stub
-// Comprobamos si tenemos disponible el Fragment de
-// contenido
+    public void onEstudianteSelected(String ccEstudiante) {
+        // TODO Auto-generated method stub
+        // Comprobamos si tenemos disponible el Fragment de
+        // contenido
         PracticeContent_Fragment contFragment = (PracticeContent_Fragment) getSupportFragmentManager()
                 .findFragmentById(R.id.tvContenido);
         if (contFragment != null) {
-// Si está disponible, estamos en la versión de 2 paneles
-            contFragment.updateContent(position);
+        // Si está disponible, estamos en la versión de 2 paneles
+            contFragment.updateContent(ccEstudiante);
         } else {
-// Si no está disponible, estamos en el layout
-// del FrameLayout, y tenemos que cambiar los Fragment
+        // Si no está disponible, estamos en el layout
+        // del FrameLayout, y tenemos que cambiar los Fragment
             contFragment = new PracticeContent_Fragment();
-            Bundle args = new Bundle();
-// Establecemos la posición que hemos elegido
-            args.putInt(PracticeContent_Fragment.POSITION, position);
+
+
+        // Establecemos la posición que hemos elegido
+            args.putString(PracticeContent_Fragment.CODECC, ccEstudiante);
             contFragment.setArguments(args);
-// Reemplazamos el Fragment que había por el nuevo
+
+        // Reemplazamos el Fragment que había por el nuevo
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.fragment_container, contFragment)
                     .addToBackStack(null).commit();

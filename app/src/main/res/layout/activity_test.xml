@@ -26,6 +26,7 @@
                 android:layout_width = "fill_parent"
                 android:layout_height = "wrap_content"
                 android:id = "@+id/edtTPk"
+                android:inputType = "number"
                 />
     </LinearLayout>
 
@@ -33,7 +34,7 @@
             android:orientation = "horizontal"
             android:layout_width = "fill_parent"
             android:layout_height = "wrap_content"
-            android:id = "@+id/"
+
             >
 
         <TextView
@@ -42,7 +43,31 @@
 
         <EditText
                 android:layout_width = "fill_parent" android:layout_height = "wrap_content" android:id = "@+id/edtTValue"
+                android:inputType = "text"
                 />
+    </LinearLayout>
+
+    <LinearLayout
+            android:orientation = "horizontal"
+            android:layout_width = "fill_parent"
+            android:layout_height = "wrap_content"
+            >
+
+        <ListView
+                android:layout_width = "wrap_content"
+                android:layout_height = "wrap_content"
+                android:id = "@+id/lstTTest"
+                android:layout_weight = "1"
+                />
+
+        <ImageView
+                android:layout_width = "fill_parent"
+                android:layout_height = "wrap_content"
+                android:id = "@+id/imvImagen"
+                android:layout_weight = "1"
+                android:scaleType = "fitCenter"
+                />
+
     </LinearLayout>
 
     <LinearLayout
@@ -67,10 +92,4 @@
 
     </LinearLayout>
 
-    <LinearLayout
-            android:orientation = "horizontal"
-            android:layout_width = "fill_parent"
-            android:layout_height = "fill_parent"
-            >
-    </LinearLayout>
 </LinearLayout>
