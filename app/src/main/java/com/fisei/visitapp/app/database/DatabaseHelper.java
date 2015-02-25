@@ -4,7 +4,6 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Environment;
 import android.util.Log;
-import com.fisei.visitapp.app.R;
 import com.fisei.visitapp.app.entity.*;
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.dao.Dao;
@@ -22,6 +21,8 @@ import java.sql.SQLException;
  */
 public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 
+
+    private final String stmt_lista_estudiantes="";
 
     final String state = Environment.getExternalStorageState();
 
@@ -45,7 +46,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
         try {
             Log.i(DatabaseHelper.class.getName(), "onCreate");
             TableUtils.createTableIfNotExists(connectionSource, Test.class);
-            TableUtils.createTableIfNotExists(connectionSource, Estudiante.class);
+            TableUtils.createTableIfNotExists(connectionSource, EstudianteInformacion.class);
         } catch (SQLException e) {
             Log.e(DatabaseHelper.class.getName(), "Can't create database", e);
             throw new RuntimeException(e);
@@ -57,7 +58,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
         try {
             Log.i(DatabaseHelper.class.getName(), "onUpgrade");
             TableUtils.dropTable(connectionSource, Test.class, true);
-            TableUtils.dropTable(connectionSource, Estudiante.class, true);
+            TableUtils.dropTable(connectionSource, EstudianteInformacion.class, true);
             onCreate(db);
         } catch (SQLException e) {
             Log.e(DatabaseHelper.class.getName(), "Can't drop databases", e);
@@ -79,14 +80,12 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     private RuntimeExceptionDao<Test,Integer> objectRuntimeTestDao=null;  
     
     
-    private Dao<Estudiante,Integer> objectEstudianteDao=null;
-    private RuntimeExceptionDao<Estudiante,Integer> objectRuntimeEstudianteDao=null;
 
     private Dao<ResponsableIngreso,Integer> objectResponsableIngresoDao=null;
     private RuntimeExceptionDao<ResponsableIngreso,Integer> objectRuntimeResponsableIngresoDao=null;
     
-    private Dao<EstudianteInfo,Integer> objectEstudianteInfoDao=null;
-    private RuntimeExceptionDao<EstudianteInfo,Integer> objectRuntimeEstudianteInfoDao=null;
+    private Dao<EstudianteInformacion,Integer> objectEstudianteInformacionDao=null;
+    private RuntimeExceptionDao<EstudianteInformacion,Integer> objectRuntimeEstudianteInformacionDao=null;
 
     private Dao<PasantiaPracticas,Integer> objectPasantiaPracticasDao=null;
     private RuntimeExceptionDao<PasantiaPracticas,Integer> objectRuntimePasantiaPracticasDao=null;
@@ -105,13 +104,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
         }
         return objectTestDao;
     }
-    public Dao<Estudiante,Integer> getEstudianteDao() throws  SQLException{
-        if(objectEstudianteDao ==null)
-        {
-            objectEstudianteDao=getDao(Estudiante.class);
-        }
-        return objectEstudianteDao;
-    }
+
    public Dao<ResponsableIngreso,Integer> getResponsableIngresoDao() throws  SQLException{
         if(objectResponsableIngresoDao ==null)
         {
@@ -120,12 +113,12 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
         return objectResponsableIngresoDao;
     } 
     
-    public Dao<EstudianteInfo,Integer> getEstudianteInfoDao() throws  SQLException{
-        if(objectEstudianteInfoDao ==null)
+    public Dao<EstudianteInformacion,Integer> getEstudianteInformacionDao() throws  SQLException{
+        if(objectEstudianteInformacionDao ==null)
         {
-            objectEstudianteInfoDao=getDao(EstudianteInfo.class);
+            objectEstudianteInformacionDao=getDao(EstudianteInformacion.class);
         }
-        return objectEstudianteInfoDao;
+        return objectEstudianteInformacionDao;
     }
 
     public Dao<PasantiaPracticas,Integer> getPasantiaPracticasDao() throws  SQLException{
@@ -150,14 +143,6 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
         return objectRuntimeTestDao;
     }
 
-    public RuntimeExceptionDao<Estudiante,Integer> getRuntimeEstudianteDao() throws  SQLException{
-        if(objectRuntimeEstudianteDao ==null)
-        {
-            objectRuntimeEstudianteDao=getRuntimeExceptionDao(Estudiante.class);
-        }
-        return objectRuntimeEstudianteDao;
-    }
-
     public RuntimeExceptionDao<ResponsableIngreso,Integer> getRuntimeResponsableIngresoDao() throws  SQLException{
         if(objectRuntimeResponsableIngresoDao ==null)
         {
@@ -166,12 +151,12 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
         return objectRuntimeResponsableIngresoDao;
     }
     
-    public RuntimeExceptionDao<EstudianteInfo,Integer> getRuntimeEstudianteInfoDao() throws  SQLException{
-        if(objectRuntimeEstudianteInfoDao ==null)
+    public RuntimeExceptionDao<EstudianteInformacion,Integer> getRuntimeEstudianteInformacionDao() throws  SQLException{
+        if(objectRuntimeEstudianteInformacionDao ==null)
         {
-            objectRuntimeEstudianteInfoDao=getRuntimeExceptionDao(EstudianteInfo.class);
+            objectRuntimeEstudianteInformacionDao=getRuntimeExceptionDao(EstudianteInformacion.class);
         }
-        return objectRuntimeEstudianteInfoDao;
+        return objectRuntimeEstudianteInformacionDao;
     }
 
     public RuntimeExceptionDao<PasantiaPracticas,Integer> getRuntimePasantiaPracticasDao() throws  SQLException{

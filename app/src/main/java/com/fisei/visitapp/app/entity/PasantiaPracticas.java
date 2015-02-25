@@ -6,35 +6,40 @@ import com.j256.ormlite.table.DatabaseTable;
 /**
  * Created by diegoztc on 20/02/15.
  */
-@DatabaseTable(tableName = "pasantia_practica")
+@DatabaseTable(tableName = "vw_estudiante_pasantias_informacion ")
 public class PasantiaPracticas {
 
-    @DatabaseField(id=true,generatedId = false,columnName = "CodPasantia")
-    private int CodPasantia;
-
-    @DatabaseField
+    @DatabaseField(id=true,generatedId = false,columnName = "CodPractica")
     private int CodPractica;
 
+    @DatabaseField(columnName = "CodPasantia")
+    private int CodPasantia;
+
+    @DatabaseField(columnName = "CodEst")
+    private int CodEst;
+
     @DatabaseField
-    private int NumHoras;
+    private String CodResponsable;
+
+    @DatabaseField
+    private String CCResponsable;
 
     @DatabaseField
     private String Entidad;
+
+
+    @DatabaseField
+    private int HorasPracticas;
+
+    @DatabaseField
+    private String Estado;
+
 
     @DatabaseField
     private String FechaInicio;
 
     @DatabaseField
     private String FechaFin;
-
-
-    public int getCodPasantia() {
-        return CodPasantia;
-    }
-
-    public void setCodPasantia(int codPasantia) {
-        CodPasantia = codPasantia;
-    }
 
     public int getCodPractica() {
         return CodPractica;
@@ -44,12 +49,36 @@ public class PasantiaPracticas {
         CodPractica = codPractica;
     }
 
-    public int getNumHoras() {
-        return NumHoras;
+    public int getCodPasantia() {
+        return CodPasantia;
     }
 
-    public void setNumHoras(int numHoras) {
-        NumHoras = numHoras;
+    public void setCodPasantia(int codPasantia) {
+        CodPasantia = codPasantia;
+    }
+
+    public int getCodEst() {
+        return CodEst;
+    }
+
+    public void setCodEst(int codEst) {
+        CodEst = codEst;
+    }
+
+    public String getCodResponsable() {
+        return CodResponsable;
+    }
+
+    public void setCodResponsable(String codResponsable) {
+        CodResponsable = codResponsable;
+    }
+
+    public String getCCResponsable() {
+        return CCResponsable;
+    }
+
+    public void setCCResponsable(String CCResponsable) {
+        this.CCResponsable = CCResponsable;
     }
 
     public String getEntidad() {
@@ -58,6 +87,22 @@ public class PasantiaPracticas {
 
     public void setEntidad(String entidad) {
         Entidad = entidad;
+    }
+
+    public int getHorasPracticas() {
+        return HorasPracticas;
+    }
+
+    public void setHorasPracticas(int horasPracticas) {
+        HorasPracticas = horasPracticas;
+    }
+
+    public String getEstado() {
+        return Estado;
+    }
+
+    public void setEstado(String estado) {
+        Estado = estado;
     }
 
     public String getFechaInicio() {
@@ -79,10 +124,14 @@ public class PasantiaPracticas {
     @Override
     public String toString() {
         return "PasantiaPracticas{" +
-                "CodPasantia=" + CodPasantia +
-                ", CodPractica=" + CodPractica +
-                ", NumHoras=" + NumHoras +
+                "CodPractica=" + CodPractica +
+                ", CodPasantia=" + CodPasantia +
+                ", CodEst=" + CodEst +
+                ", CodResponsable='" + CodResponsable + '\'' +
+                ", CCResponsable='" + CCResponsable + '\'' +
                 ", Entidad='" + Entidad + '\'' +
+                ", HorasPracticas=" + HorasPracticas +
+                ", Estado='" + Estado + '\'' +
                 ", FechaInicio='" + FechaInicio + '\'' +
                 ", FechaFin='" + FechaFin + '\'' +
                 '}';

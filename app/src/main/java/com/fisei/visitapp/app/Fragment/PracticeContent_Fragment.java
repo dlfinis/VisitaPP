@@ -1,7 +1,5 @@
 package com.fisei.visitapp.app.Fragment;
 
-import android.util.Log;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import com.fisei.visitapp.app.R;
 import android.os.Bundle;
@@ -12,8 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import com.fisei.visitapp.app.adapter.AdapterEstudiantePracticas;
 import com.fisei.visitapp.app.database.DatabaseManager;
-import com.fisei.visitapp.app.entity.Estudiante;
-import com.fisei.visitapp.app.entity.EstudianteInfo;
+import com.fisei.visitapp.app.entity.EstudianteInformacion;
 import com.fisei.visitapp.app.entity.PasantiaPracticas;
 
 import java.util.List;
@@ -60,7 +57,7 @@ public class PracticeContent_Fragment extends Fragment {
 
         try {
             // Instanciamos el TextView y establecemos el contenido
-            EstudianteInfo est = DatabaseManager.getInstance().getEstudianteInfo(codeCC);
+            EstudianteInformacion est = DatabaseManager.getInstance().getEstudianteInformacion(codeCC);
 
             TextView txtENombre = (TextView) getActivity().findViewById(R.id.txtENombre);
             TextView txtECedula = (TextView) getActivity().findViewById(R.id.txtECedula);
@@ -70,12 +67,12 @@ public class PracticeContent_Fragment extends Fragment {
             TextView txtEHorasPracticas = (TextView) getActivity().findViewById(R.id.txtEHorasPracticas);
             TextView txtENumPracticas = (TextView) getActivity().findViewById(R.id.txtENumPracticas);
 
-            txtENombre.setText(est.getNombre());
+            txtENombre.setText(est.getNombres());
             txtECedula.setText(codeCC);
             txtEEmail.setText(est.getEmail());
             txtECarrera.setText(est.getCarrera());
             txtENumCreditos.setText(String.valueOf(est.getNumCreditos()));
-            txtEHorasPracticas.setText(String.valueOf(est.getNumHoras()));
+            txtEHorasPracticas.setText(String.valueOf(est.getHorasPasantias()));
             txtENumPracticas.setText(String.valueOf(est.getNumPracticas()));
 
             ListView lstEPracticas = (ListView) getActivity().findViewById(R.id.lstEPracticas);

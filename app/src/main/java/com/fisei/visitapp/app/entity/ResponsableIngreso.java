@@ -6,17 +6,17 @@ import com.j256.ormlite.table.DatabaseTable;
 /**
  * Created by diegoztc on 20/02/15.
  */
-@DatabaseTable(tableName ="responsable_ingreso")
+@DatabaseTable(tableName ="vw_responsable_ingreso")
 public class ResponsableIngreso {
 
     @DatabaseField(id=true,generatedId = false,columnName = "CodResponsable")
     private int CodResponsable;
 
-    @DatabaseField(columnName = "Cedula")
-    private String Cedula;
+    @DatabaseField(columnName = "CCResponsable")
+    private String CCResponsable;
 
-    @DatabaseField(columnName = "Nombre")
-    private String Nombre;
+    @DatabaseField(columnName = "Nombres")
+    private String Nombres;
 
     @DatabaseField(columnName = "Apellidos")
     private String Apellidos;
@@ -32,20 +32,20 @@ public class ResponsableIngreso {
         CodResponsable = codResponsable;
     }
 
-    public String getCedula() {
-        return Cedula;
+    public String getCCResponsable() {
+        return CCResponsable;
     }
 
-    public void setCedula(String cedula) {
-        Cedula = cedula;
+    public void setCCResponsable(String CCResponsable) {
+        this.CCResponsable = CCResponsable;
     }
 
-    public String getNombre() {
-        return Nombre;
+    public String getNombres() {
+        return Nombres;
     }
 
-    public void setNombre(String nombre) {
-        Nombre = nombre;
+    public void setNombres(String nombres) {
+        Nombres = nombres;
     }
 
     public String getApellidos() {
@@ -68,8 +68,8 @@ public class ResponsableIngreso {
     public String toString() {
         return "ResponsableIngreso{" +
                 "CodResponsable=" + CodResponsable +
-                ", Cedula='" + Cedula + '\'' +
-                ", Nombre='" + Nombre + '\'' +
+                ", CCResponsable='" + CCResponsable + '\'' +
+                ", Nombres='" + Nombres + '\'' +
                 ", Apellidos='" + Apellidos + '\'' +
                 ", Clave='" + Clave + '\'' +
                 '}';

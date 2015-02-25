@@ -65,11 +65,25 @@ public class DatabaseManagerPGSQL {
 
     }
 
+    /**
+     * @desc Method to insert data to a table
+     * @param selectQuery String The select query
+     * @return boolean
+     * @throws SQLException
+     */
+    public Object queryScalar(String selectQuery) throws SQLException {
+        statement = instance.conn.createStatement();
+        ResultSet result = statement.executeQuery(selectQuery);
+        result.next();
+        return result.getObject(1);
+
+    }
+
     private DatabaseManagerPGSQL() {
 
         try {
             Class.forName("org.postgresql.Driver");
-            Connection con = DriverManager.getConnection(url, user, pass);
+            conn = DriverManager.getConnection(url, user, pass);
         }
         catch (Exception sqle) {
             sqle.printStackTrace();

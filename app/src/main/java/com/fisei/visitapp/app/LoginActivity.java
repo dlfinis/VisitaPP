@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 import com.fisei.visitapp.app.database.DatabaseManager;
 
+import com.fisei.visitapp.app.database.DatabaseManagerPGSQL;
 import com.fisei.visitapp.app.entity.ResponsableIngreso;
 
 import java.sql.*;
@@ -68,19 +69,9 @@ public class LoginActivity extends Activity {
 
         protected Void doInBackground(Void... params) {
             try {
-                Class.forName("org.postgresql.Driver");
-                    String url = "jdbc:postgresql://192.168.56.1/sppp";
+                Log.e("Timestamp Test",
+                        DatabaseManagerPGSQL.getInstance().queryScalar("Select current_timestamp").toString());
 
-
-                con = DriverManager.getConnection(url, "postgres", "postgres");
-
-                Statement st = con.createStatement();
-                ResultSet rs = st.executeQuery("select current_timestamp");
-
-                rs.next();
-                Log.e("Timestamp Test", rs.getObject(1).toString());
-                rs.close();
-                con.close();
 
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -132,9 +123,9 @@ public class LoginActivity extends Activity {
                         Toast.makeText(getApplicationContext(),"Bienvenido...",Toast.LENGTH_LONG).show();
 
                         Intent inicioIntent = new Intent(LoginActivity.this, HomeActivity.class);
-                        inicioIntent.putExtra("ccResponsable", responsableIngreso.getCedula());
+                        inicioIntent.putExtra("ccResponsable", responsableIngreso.getCCResponsable());
                         inicioIntent.putExtra("nomCompletoResponsable",
-                                responsableIngreso.getNombre()+" "+responsableIngreso.getApellidos());
+                                responsableIngreso.getNombres()+" "+responsableIngreso.getApellidos());
 
                         startActivity(inicioIntent);
 

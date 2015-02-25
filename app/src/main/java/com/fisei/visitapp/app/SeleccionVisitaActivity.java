@@ -22,7 +22,7 @@ public class SeleccionVisitaActivity extends Activity {
 
 
     private List<String> getListaEstudiantesCedula(){
-        List<String> listaEstudiantes = DatabaseManager.getInstance().getAllEstudianteCedula();
+        List<String> listaEstudiantes = DatabaseManager.getInstance().getAllEstudiantesCC();
         return listaEstudiantes;
     }
 

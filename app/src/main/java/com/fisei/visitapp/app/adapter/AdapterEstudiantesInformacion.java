@@ -1,15 +1,12 @@
 package com.fisei.visitapp.app.adapter;
 
 import android.app.Activity;
-import android.app.ListFragment;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
-import com.fisei.visitapp.app.Fragment.PracticeList_Fragment;
 import com.fisei.visitapp.app.R;
-import com.fisei.visitapp.app.entity.Estudiante;
+import com.fisei.visitapp.app.entity.EstudianteInformacion;
 import org.apache.http.NameValuePair;
 
 import java.util.List;
@@ -17,22 +14,22 @@ import java.util.List;
 /**
  * Created by diegoztc on 19/02/15.
  */
-public class AdapterEstudiantes extends ArrayAdapter {
+public class AdapterEstudiantesInformacion extends ArrayAdapter {
 // Hacemos que nuestra clase herede las características de un ArrayAdapter
 
     Activity context;
     NameValuePair[] datos;
-    List<Estudiante> listaEstudiantes;
+    List<EstudianteInformacion> listaEstudiantesInformacion;
 
     /* Creamos las variables necesarias para capturar el contexto
     *  y los datos que se publicarán en la lista
     */
 
 
-    public AdapterEstudiantes(Activity context, List<Estudiante> lista) {
+    public AdapterEstudiantesInformacion(Activity context, List<EstudianteInformacion> lista) {
         super(context, R.layout.listview_estudiantes,lista);
         this.context=context;
-        this.listaEstudiantes=lista;
+        this.listaEstudiantesInformacion =lista;
         // TODO Auto-generated constructor stub
     }
 
@@ -47,14 +44,14 @@ public class AdapterEstudiantes extends ArrayAdapter {
         View item = convertView;
         item = context.getLayoutInflater().inflate(R.layout.listview_estudiantes, null);
 
-        Estudiante est= listaEstudiantes.get(position);
+        EstudianteInformacion est= listaEstudiantesInformacion.get(position);
 
 
         TextView cedula=(TextView) item.findViewById(R.id.txtListCedula);
         cedula.setText(est.getCCEstudiante());
 
         TextView nombre=(TextView) item.findViewById(R.id.txtListNombre);
-        nombre.setText(est.getNombre()+" "+est.getApellido());
+        nombre.setText(est.getNombres()+" "+est.getApellidos());
 
         return item;
     }

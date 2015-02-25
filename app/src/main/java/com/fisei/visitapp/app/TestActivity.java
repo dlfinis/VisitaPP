@@ -1,26 +1,14 @@
 package com.fisei.visitapp.app;
 
 import android.app.Activity;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.support.annotation.NonNull;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.support.v7.internal.widget.AdapterViewCompat;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
 import android.widget.*;
-import com.fisei.visitapp.app.adapter.AdapterEstudiantes;
-import com.fisei.visitapp.app.database.DatabaseHelper;
+import com.fisei.visitapp.app.adapter.AdapterEstudiantesInformacion;
 import com.fisei.visitapp.app.database.DatabaseManager;
-import com.fisei.visitapp.app.entity.Estudiante;
+import com.fisei.visitapp.app.entity.EstudianteInformacion;
 import com.fisei.visitapp.app.entity.Test;
-import com.j256.ormlite.android.apptools.OpenHelperManager;
-import com.j256.ormlite.dao.Dao;
 
-import java.sql.SQLException;
 import java.util.*;
 
 
@@ -36,9 +24,9 @@ public class TestActivity extends Activity {
     ListView lstTest;
     ImageView imgvImage;
 
-    List<Estudiante> listaEstudiantes;
+    List<EstudianteInformacion> listaEstudiantes;
     // Creamos un adapter personalizado
-    AdapterEstudiantes adapterEstudiantes;
+    AdapterEstudiantesInformacion adapterEstudiantesInformacion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,7 +61,7 @@ public class TestActivity extends Activity {
 
 
     private void setListView(ListView lstTest){
-         List testList = DatabaseManager.getInstance().getAllEstudiante();
+         List testList = DatabaseManager.getInstance().getAllEstudiantesInformacion();
 
 
         List<String> titles = new ArrayList<String>();
@@ -93,11 +81,11 @@ public class TestActivity extends Activity {
 // Añadimos el adapter al listview
 
 
-        listaEstudiantes =DatabaseManager.getInstance().getAllEstudiante();
+        listaEstudiantes =DatabaseManager.getInstance().getAllEstudiantesInformacion();
 
-        adapterEstudiantes= new AdapterEstudiantes(this,listaEstudiantes);
+        adapterEstudiantesInformacion = new AdapterEstudiantesInformacion(this,listaEstudiantes);
 
-        lstTest.setAdapter(adapterEstudiantes);
+        lstTest.setAdapter(adapterEstudiantesInformacion);
 
 
          }

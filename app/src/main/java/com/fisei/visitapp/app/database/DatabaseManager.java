@@ -10,7 +10,6 @@ import android.content.Context;
 
 import android.util.Log;
 import com.fisei.visitapp.app.entity.*;
-import com.j256.ormlite.dao.ForeignCollection;
 import com.j256.ormlite.dao.GenericRawResults;
 import com.j256.ormlite.dao.RawRowMapper;
 import com.j256.ormlite.stmt.PreparedQuery;
@@ -100,35 +99,43 @@ public class DatabaseManager {
         return test;
     }
     
-    
-    
-    public List<Estudiante> getAllEstudiante() {
-        List<Estudiante> testList = null;
+    public EstudianteInformacion getEstudianteInformacion(String cc) {
+        EstudianteInformacion test =new EstudianteInformacion();
         try {
-            testList= getHelper().getRuntimeEstudianteDao().queryForAll();
+
+            QueryBuilder<EstudianteInformacion, Integer> qb =
+                    getHelper().getRuntimeEstudianteInformacionDao().queryBuilder();
+
+            qb.where().eq("CCEstudiante", cc);
+            PreparedQuery<EstudianteInformacion> pq = qb.prepare();
+            test= getHelper().getRuntimeEstudianteInformacionDao().queryForFirst(pq);
         } catch (SQLException e) {
+            Log.e("Estudiante Info", e.getMessage());
             e.printStackTrace();
         }
-        return testList;
+        return test;
     }
 
-    public List<String> getAllEstudianteCedula() {
+
+
+
+    public List<String> getAllEstudiantesCC() {
         List<String> testList = null;
         try {
-            QueryBuilder<Estudiante, Integer> qb =
-                    getHelper().getRuntimeEstudianteDao().queryBuilder();
+            QueryBuilder<EstudianteInformacion, Integer> qb =
+                    getHelper().getRuntimeEstudianteInformacionDao().queryBuilder();
 
             qb.selectColumns("CCEstudiante");
 
 
 
             final GenericRawResults<String> rawResults =
-                    getHelper().getRuntimeEstudianteDao().queryRaw(qb.prepareStatementString(), new RawRowMapper<String>() {
-                public String mapRow(String[] columnNames, String[] resultColumns) {
-                    return resultColumns[0];
-                }
-            });
-           testList = rawResults.getResults();
+                    getHelper().getRuntimeEstudianteInformacionDao().queryRaw(qb.prepareStatementString(), new RawRowMapper<String>() {
+                        public String mapRow(String[] columnNames, String[] resultColumns) {
+                            return resultColumns[0];
+                        }
+                    });
+            testList = rawResults.getResults();
             testList.add(0, "");
 
 
@@ -138,34 +145,16 @@ public class DatabaseManager {
         return testList;
     }
 
-
-    public Estudiante getEstudiante(int id) {
-        Estudiante test =new Estudiante();
+    public List<EstudianteInformacion> getAllEstudiantesInformacion() {
+        List<EstudianteInformacion> testList = null;
         try {
-           test= (Estudiante) getHelper().getRuntimeEstudianteDao().queryForId(id);
+            testList= getHelper().getRuntimeEstudianteInformacionDao().queryForAll();
         } catch (SQLException e) {
-            Log.e("ID", e.getMessage());
             e.printStackTrace();
         }
-        return test;
+        return testList;
     }
 
-    public EstudianteInfo getEstudianteInfo(String cc) {
-        EstudianteInfo test =new EstudianteInfo();
-        try {
-
-            QueryBuilder<EstudianteInfo, Integer> qb =
-                    getHelper().getRuntimeEstudianteInfoDao().queryBuilder();
-
-            qb.where().eq("CC", cc);
-            PreparedQuery<EstudianteInfo> pq = qb.prepare();
-            test= getHelper().getRuntimeEstudianteInfoDao().queryForFirst(pq);
-        } catch (SQLException e) {
-            Log.e("Estudiante Info", e.getMessage());
-            e.printStackTrace();
-        }
-        return test;
-    }
 
     public List<PasantiaPracticas> getAllPasantiaPracticas() {
         List<PasantiaPracticas> testList = null;

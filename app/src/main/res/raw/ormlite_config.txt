@@ -1,32 +1,6 @@
 #
-# generated on 2015/02/21 08:29:40
+# generated on 2015/02/25 11:09:59
 #
-# --table-start--
-dataClass=com.fisei.visitapp.app.entity.Estudiante
-tableName=lista_estudiantes
-# --table-fields-start--
-# --field-start--
-fieldName=CodEstudiante
-id=true
-# --field-end--
-# --field-start--
-fieldName=CCEstudiante
-# --field-end--
-# --field-start--
-fieldName=CodResponsable
-# --field-end--
-# --field-start--
-fieldName=CCResponsable
-# --field-end--
-# --field-start--
-fieldName=Nombre
-# --field-end--
-# --field-start--
-fieldName=Apellido
-# --field-end--
-# --table-fields-end--
-# --table-end--
-#################################
 # --table-start--
 dataClass=com.fisei.visitapp.app.entity.Test
 tableName=test
@@ -48,25 +22,28 @@ fieldName=imageuri
 # --table-end--
 #################################
 # --table-start--
-dataClass=com.fisei.visitapp.app.entity.EstudianteInfo
-tableName=estudiante_info
+dataClass=com.fisei.visitapp.app.entity.EstudianteInformacion
+tableName=vw_estudiante_informacion
 # --table-fields-start--
 # --field-start--
 fieldName=CodEstudiante
 id=true
 # --field-end--
 # --field-start--
-fieldName=CC
-columnName=CC
+fieldName=CCEstudiante
+columnName=CCEstudiante
 # --field-end--
 # --field-start--
-fieldName=Nombre
+fieldName=Nombres
 # --field-end--
 # --field-start--
-fieldName=Apellido
+fieldName=Apellidos
 # --field-end--
 # --field-start--
-fieldName=Celular
+fieldName=Sexo
+# --field-end--
+# --field-start--
+fieldName=Movil
 # --field-end--
 # --field-start--
 fieldName=Email
@@ -75,7 +52,7 @@ fieldName=Email
 fieldName=Carrera
 # --field-end--
 # --field-start--
-fieldName=NumHoras
+fieldName=HorasPasantias
 # --field-end--
 # --field-start--
 fieldName=NumCreditos
@@ -86,12 +63,80 @@ fieldName=NumPracticas
 # --field-start--
 fieldName=CodPasantia
 # --field-end--
+# --field-start--
+fieldName=CodResponsable
+# --field-end--
+# --field-start--
+fieldName=CCResponsable
+columnName=CCResponsable
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=com.fisei.visitapp.app.entity.Visita
+tableName=vw_visita_practica
+# --table-fields-start--
+# --field-start--
+fieldName=CodVisita
+columnName=CodVisita
+id=true
+generatedId=true
+# --field-end--
+# --field-start--
+fieldName=CodPractica
+columnName=CodPractica
+# --field-end--
+# --field-start--
+fieldName=Observaciones
+defaultValue=Ninguna
+# --field-end--
+# --field-start--
+fieldName=FechaVisita
+defaultValue=''
+# --field-end--
+# --field-start--
+fieldName=Opcion1
+defaultValue=f
+# --field-end--
+# --field-start--
+fieldName=Opcion2
+defaultValue=f
+# --field-end--
+# --field-start--
+fieldName=Opcion3
+defaultValue=f
+# --field-end--
+# --field-start--
+fieldName=Opcion4
+defaultValue=f
+# --field-end--
+# --field-start--
+fieldName=Opcion5
+defaultValue=f
+# --field-end--
+# --field-start--
+fieldName=Opcion6
+defaultValue=f
+# --field-end--
+# --field-start--
+fieldName=Opcion7
+defaultValue=f
+# --field-end--
+# --field-start--
+fieldName=Opcion8
+defaultValue=f
+# --field-end--
+# --field-start--
+fieldName=Imagen
+dataPersister=BYTE_ARRAY
+# --field-end--
 # --table-fields-end--
 # --table-end--
 #################################
 # --table-start--
 dataClass=com.fisei.visitapp.app.entity.ResponsableIngreso
-tableName=responsable_ingreso
+tableName=vw_responsable_ingreso
 # --table-fields-start--
 # --field-start--
 fieldName=CodResponsable
@@ -99,12 +144,12 @@ columnName=CodResponsable
 id=true
 # --field-end--
 # --field-start--
-fieldName=Cedula
-columnName=Cedula
+fieldName=CCResponsable
+columnName=CCResponsable
 # --field-end--
 # --field-start--
-fieldName=Nombre
-columnName=Nombre
+fieldName=Nombres
+columnName=Nombres
 # --field-end--
 # --field-start--
 fieldName=Apellidos
@@ -119,21 +164,35 @@ columnName=Clave
 #################################
 # --table-start--
 dataClass=com.fisei.visitapp.app.entity.PasantiaPracticas
-tableName=pasantia_practica
+tableName=vw_estudiante_pasantias_informacion 
 # --table-fields-start--
 # --field-start--
-fieldName=CodPasantia
-columnName=CodPasantia
+fieldName=CodPractica
+columnName=CodPractica
 id=true
 # --field-end--
 # --field-start--
-fieldName=CodPractica
+fieldName=CodPasantia
+columnName=CodPasantia
 # --field-end--
 # --field-start--
-fieldName=NumHoras
+fieldName=CodEst
+columnName=CodEst
+# --field-end--
+# --field-start--
+fieldName=CodResponsable
+# --field-end--
+# --field-start--
+fieldName=CCResponsable
 # --field-end--
 # --field-start--
 fieldName=Entidad
+# --field-end--
+# --field-start--
+fieldName=HorasPracticas
+# --field-end--
+# --field-start--
+fieldName=Estado
 # --field-end--
 # --field-start--
 fieldName=FechaInicio

@@ -1,16 +1,14 @@
 package com.fisei.visitapp.app.Fragment;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.util.Log;
 import android.view.View;
 import android.widget.*;
-import com.fisei.visitapp.app.adapter.AdapterEstudiantes;
+import com.fisei.visitapp.app.adapter.AdapterEstudiantesInformacion;
 import com.fisei.visitapp.app.database.DatabaseManager;
-import com.fisei.visitapp.app.dummy.Content;
-import com.fisei.visitapp.app.entity.Estudiante;
+import com.fisei.visitapp.app.entity.EstudianteInformacion;
 
 import java.util.List;
 
@@ -28,14 +26,14 @@ public class PracticeList_Fragment extends ListFragment {
             public void onEstudianteSelected(String codeCC);
         }
 
-         private List<Estudiante> getListaEstudiantes(){
+         private List<EstudianteInformacion> getListaEstudiantes(){
              Bundle args = getArguments();
              if (args != null){
                 String ccResponsable=args.getString("ccResponsable");
-                 List<Estudiante> listaEstudiantes = DatabaseManager.getInstance().getAllEstudiante();
+                 List<EstudianteInformacion> listaEstudiantes = DatabaseManager.getInstance().getAllEstudiantesInformacion();
                  return listaEstudiantes;
              }else {
-                 List<Estudiante> listaEstudiantes = DatabaseManager.getInstance().getAllEstudiante();
+                 List<EstudianteInformacion> listaEstudiantes = DatabaseManager.getInstance().getAllEstudiantesInformacion();
                  return listaEstudiantes;
              }
 
@@ -54,7 +52,7 @@ public class PracticeList_Fragment extends ListFragment {
 //            setListAdapter(new ArrayAdapter<Estudiante>(getActivity(),
 //                    android.R.layout.simple_list_item_1,ListaEstudiantes));
 
-            setListAdapter(new AdapterEstudiantes(getActivity(),getListaEstudiantes()));
+            setListAdapter(new AdapterEstudiantesInformacion(getActivity(),getListaEstudiantes()));
 
 
         }
@@ -79,7 +77,7 @@ public class PracticeList_Fragment extends ListFragment {
             // TODO Auto-generated method stub
             super.onListItemClick(l, v, position, id);
 
-            Estudiante est=(Estudiante)l.getItemAtPosition(position);
+            EstudianteInformacion est=(EstudianteInformacion)l.getItemAtPosition(position);
             // Llamamos al método que implementa la Activity pasandole
             // la posicion del elemento que hemos pulsado
 

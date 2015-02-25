@@ -6,7 +6,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import com.fisei.visitapp.app.R;
-import com.fisei.visitapp.app.entity.Estudiante;
 import com.fisei.visitapp.app.entity.PasantiaPracticas;
 import org.apache.http.NameValuePair;
 
@@ -55,7 +54,7 @@ public class AdapterEstudiantePracticas extends ArrayAdapter {
         TextView ffin=(TextView) item.findViewById(R.id.txtLEFechaFin);
 
         entidad.setText(practica.getEntidad());
-        horas.setText(String.valueOf(practica.getNumHoras()));
+        horas.setText(String.valueOf(practica.getHorasPracticas()));
         finicio.setText(String.valueOf(practica.getFechaInicio()));
         ffin.setText(String.valueOf(practica.getFechaFin()));
 
