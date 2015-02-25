@@ -1,0 +1,165 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:layout_width="fill_parent"
+                  android:layout_height="fill_parent"
+                  android:orientation="vertical" android:padding = "@dimen/padding_Medium"
+                  android:paddingTop = "@dimen/padding_large"
+                  android:paddingBottom = "@dimen/padding_large"
+                  android:id = "@+id/lnlEstudiante"
+        >
+
+
+
+        <LinearLayout
+                android:orientation = "horizontal"
+                android:layout_width = "fill_parent"
+                android:layout_height = "wrap_content"
+                android:paddingBottom = "@dimen/padding_Small"
+                android:paddingTop = "@dimen/padding_Small"
+                >
+
+            <LinearLayout
+                    android:orientation = "vertical"
+                    android:layout_width = "wrap_content"
+                    android:layout_height = "fill_parent"
+                    android:gravity = "center_vertical"
+                    >
+
+                <TextView
+                        android:id="@+id/txtEInfo"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:textStyle="bold"
+                        android:textColor="@color/accent"
+                        android:textSize="18sp"
+                        android:text="Info" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <FrameLayout
+                android:layout_width = "fill_parent"
+                android:layout_height = "2dp"
+                android:background = "@color/accent"
+                >
+        </FrameLayout>
+
+    <LinearLayout
+            android:orientation = "vertical" android:layout_width = "fill_parent" android:layout_height = "wrap_content" android:gravity = "center_vertical"
+            android:paddingTop = "@dimen/padding_Small"
+            android:paddingBottom = "@dimen/padding_Small"
+            >
+
+        <LinearLayout
+                android:orientation = "horizontal"
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_gravity = "center_horizontal"
+                android:paddingBottom = "@dimen/padding_Small"
+                android:paddingTop = "@dimen/padding_Small"
+                >
+
+            <TextView
+                    android:layout_width = "wrap_content"
+                    android:layout_height = "wrap_content"
+                    android:text = "Nombre:"
+                    android:id = "@+id/textView11"
+                    android:textColor = "@color/orange_400"
+                    android:textSize = "@dimen/font_size_Small"
+                    android:textStyle = "bold"
+                    />
+
+            <TextView
+                    android:id = "@+id/txtENombre" android:layout_width = "fill_parent" android:layout_height = "wrap_content" android:layout_gravity = "center_vertical" android:textStyle = "bold" android:textColor = "@color/material_blue_grey_800" android:textSize = "@dimen/font_size_Small" android:text = "Nombre"
+                    android:paddingLeft = "@dimen/padding_Small"
+                    />
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:orientation = "horizontal" android:layout_width = "fill_parent" android:layout_height = "wrap_content" android:layout_gravity = "center_horizontal"
+                android:paddingBottom = "@dimen/padding_Small"
+                android:paddingTop = "@dimen/padding_Small"
+                >
+
+            <TextView
+                    android:layout_width = "wrap_content" android:layout_height = "wrap_content" android:text = "Cedula:" android:id = "@+id/textView8" android:textColor = "@color/brown_500" android:textSize = "@dimen/font_size_Small" android:textStyle = "bold"
+                    android:layout_weight = "0.10"
+                    />
+
+            <TextView
+                    android:id = "@+id/txtECedula" android:layout_width = "wrap_content" android:layout_height = "wrap_content" android:layout_gravity = "center_vertical" android:textStyle = "bold" android:textColor = "@color/material_blue_grey_800" android:textSize = "@dimen/font_size_Small"
+                    android:text = "Cedula"
+                    android:layout_weight = "0.50"
+                    android:paddingRight = "@dimen/padding_Small"
+                    />
+
+            <TextView
+                    android:layout_width = "wrap_content" android:layout_height = "wrap_content" android:text = "Email:" android:id = "@+id/textView7" android:textColor = "@color/brown_500" android:textSize = "@dimen/font_size_Small" android:textStyle = "bold"
+                    android:layout_weight = "0.15"
+                    />
+
+            <TextView
+                    android:id = "@+id/txtEEmail" android:layout_width = "wrap_content" android:layout_height = "wrap_content" android:layout_gravity = "center_vertical" android:textStyle = "bold" android:textColor = "@color/material_blue_grey_800" android:textSize = "@dimen/font_size_Small" android:text = "Email"
+                    android:layout_weight = "1"
+                    />
+        </LinearLayout>
+
+        <LinearLayout
+                android:orientation = "horizontal" android:layout_width = "fill_parent" android:layout_height = "wrap_content" android:layout_gravity = "center_horizontal" android:paddingBottom = "@dimen/padding_Small" android:paddingTop = "@dimen/padding_Small"
+                >
+
+            <TextView
+                    android:layout_width = "wrap_content" android:layout_height = "wrap_content" android:text = "#Creditos:" android:id = "@+id/textView9" android:textColor = "@color/brown_500" android:textSize = "@dimen/font_size_Small" android:textStyle = "bold" android:layout_weight = "0.10"
+                    />
+
+            <TextView
+                    android:id = "@+id/txtENumCreditos" android:layout_width = "wrap_content" android:layout_height = "wrap_content" android:layout_gravity = "center_vertical" android:textStyle = "bold" android:textColor = "@color/material_blue_grey_800" android:textSize = "@dimen/font_size_Small" android:text = "#NCreditos" android:layout_weight = "0.50" android:paddingRight = "@dimen/padding_Small"
+                    />
+
+            <TextView
+                    android:layout_width = "wrap_content" android:layout_height = "wrap_content" android:text = "Carrera:" android:id = "@+id/textView12" android:textColor = "@color/brown_500" android:textSize = "@dimen/font_size_Small" android:textStyle = "bold" android:layout_weight = "0.15"
+                    />
+
+            <TextView
+                    android:id = "@+id/txtECarrera" android:layout_width = "wrap_content" android:layout_height = "wrap_content" android:layout_gravity = "center_vertical" android:textStyle = "bold" android:textColor = "@color/material_blue_grey_800" android:textSize = "@dimen/font_size_Small" android:text = "Carrera" android:layout_weight = "1"
+                    />
+        </LinearLayout>
+
+        <LinearLayout
+                android:orientation = "horizontal" android:layout_width = "fill_parent" android:layout_height = "wrap_content" android:layout_gravity = "center_horizontal" android:paddingBottom = "@dimen/padding_Small" android:paddingTop = "@dimen/padding_Small"
+                >
+
+            <TextView
+                    android:layout_width = "wrap_content" android:layout_height = "wrap_content" android:text = "#HorasPracticas:" android:id = "@+id/textView10" android:textColor = "@color/brown_500" android:textSize = "@dimen/font_size_Small" android:textStyle = "bold" android:layout_weight = "0.10"
+                    />
+
+            <TextView
+                    android:id = "@+id/txtEHorasPracticas" android:layout_width = "wrap_content" android:layout_height = "wrap_content" android:layout_gravity = "center_vertical" android:textStyle = "bold" android:textColor = "@color/material_blue_grey_800" android:textSize = "@dimen/font_size_Small" android:text = "#NHoras" android:layout_weight = "0.50" android:paddingRight = "@dimen/padding_Small"
+                    />
+
+            <TextView
+                    android:layout_width = "wrap_content" android:layout_height = "wrap_content" android:text = "#Practicas" android:id = "@+id/textView14" android:textColor = "@color/brown_500" android:textSize = "@dimen/font_size_Small" android:textStyle = "bold" android:layout_weight = "0.15"
+                    />
+
+            <TextView
+                    android:id = "@+id/txtENumPracticas" android:layout_width = "wrap_content" android:layout_height = "wrap_content" android:layout_gravity = "center_vertical" android:textStyle = "bold" android:textColor = "@color/material_blue_grey_800" android:textSize = "@dimen/font_size_Small" android:text = "#Practicas" android:layout_weight = "1"
+                    />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <FrameLayout
+            android:layout_width = "fill_parent" android:layout_height = "2dp" android:background = "@color/accent"
+            android:paddingBottom = "@dimen/padding_Small"
+            />
+
+    <ListView
+            android:layout_width = "wrap_content"
+            android:layout_height = "wrap_content"
+            android:id = "@+id/lstEPracticas"
+            android:choiceMode = "singleChoice"
+            />
+
+</LinearLayout>

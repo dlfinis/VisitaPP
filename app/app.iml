@@ -22,7 +22,7 @@
       </configuration>
     </facet>
   </component>
-  <component name="NewModuleRootManager" inherit-compiler-output="false">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_6" inherit-compiler-output="false">
     <output url="file://$MODULE_DIR$/build/intermediates/classes/debug" />
     <exclude-output />
     <content url="file://$MODULE_DIR$">
@@ -89,5 +89,7 @@
     <orderEntry type="library" exported="" name="support-annotations-21.0.3" level="project" />
     <orderEntry type="library" exported="" name="support-v4-21.0.3" level="project" />
     <orderEntry type="library" exported="" name="ormlite-jdbc-4.48" level="project" />
+    <orderEntry type="library" name="postgresql-9.3-1103.jdbc3" level="project" />
+    <orderEntry type="library" name="postgresql-9.4-1200.jdbc4" level="project" />
   </component>
 </module>

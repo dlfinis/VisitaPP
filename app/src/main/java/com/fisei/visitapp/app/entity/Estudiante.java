@@ -12,7 +12,7 @@ public class Estudiante {
     @DatabaseField(id=true,generatedId = false)
     private int CodEstudiante;
 
-    @DatabaseField
+    @DatabaseField(columnName = "CCEstudiante")
     private String CCEstudiante;
 
     @DatabaseField

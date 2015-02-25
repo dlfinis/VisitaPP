@@ -1,5 +1,5 @@
 #
-# generated on 2015/02/19 09:55:59
+# generated on 2015/02/21 08:29:40
 #
 # --table-start--
 dataClass=com.fisei.visitapp.app.entity.Estudiante
@@ -43,6 +43,103 @@ defaultValue=123
 # --field-end--
 # --field-start--
 fieldName=imageuri
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=com.fisei.visitapp.app.entity.EstudianteInfo
+tableName=estudiante_info
+# --table-fields-start--
+# --field-start--
+fieldName=CodEstudiante
+id=true
+# --field-end--
+# --field-start--
+fieldName=CC
+columnName=CC
+# --field-end--
+# --field-start--
+fieldName=Nombre
+# --field-end--
+# --field-start--
+fieldName=Apellido
+# --field-end--
+# --field-start--
+fieldName=Celular
+# --field-end--
+# --field-start--
+fieldName=Email
+# --field-end--
+# --field-start--
+fieldName=Carrera
+# --field-end--
+# --field-start--
+fieldName=NumHoras
+# --field-end--
+# --field-start--
+fieldName=NumCreditos
+# --field-end--
+# --field-start--
+fieldName=NumPracticas
+# --field-end--
+# --field-start--
+fieldName=CodPasantia
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=com.fisei.visitapp.app.entity.ResponsableIngreso
+tableName=responsable_ingreso
+# --table-fields-start--
+# --field-start--
+fieldName=CodResponsable
+columnName=CodResponsable
+id=true
+# --field-end--
+# --field-start--
+fieldName=Cedula
+columnName=Cedula
+# --field-end--
+# --field-start--
+fieldName=Nombre
+columnName=Nombre
+# --field-end--
+# --field-start--
+fieldName=Apellidos
+columnName=Apellidos
+# --field-end--
+# --field-start--
+fieldName=Clave
+columnName=Clave
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=com.fisei.visitapp.app.entity.PasantiaPracticas
+tableName=pasantia_practica
+# --table-fields-start--
+# --field-start--
+fieldName=CodPasantia
+columnName=CodPasantia
+id=true
+# --field-end--
+# --field-start--
+fieldName=CodPractica
+# --field-end--
+# --field-start--
+fieldName=NumHoras
+# --field-end--
+# --field-start--
+fieldName=Entidad
+# --field-end--
+# --field-start--
+fieldName=FechaInicio
+# --field-end--
+# --field-start--
+fieldName=FechaFin
 # --field-end--
 # --table-fields-end--
 # --table-end--

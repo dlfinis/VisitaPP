@@ -7,21 +7,21 @@ import com.j256.ormlite.table.DatabaseTable;
  * Created by diegoztc on 20/02/15.
  */
 @DatabaseTable(tableName ="responsable_ingreso")
-public class Responsable_Inicio {
+public class ResponsableIngreso {
 
-    @DatabaseField(id=true,generatedId = false)
+    @DatabaseField(id=true,generatedId = false,columnName = "CodResponsable")
     private int CodResponsable;
 
-    @DatabaseField
+    @DatabaseField(columnName = "Cedula")
     private String Cedula;
 
-    @DatabaseField
+    @DatabaseField(columnName = "Nombre")
     private String Nombre;
 
-    @DatabaseField
+    @DatabaseField(columnName = "Apellidos")
     private String Apellidos;
 
-    @DatabaseField
+    @DatabaseField(columnName = "Clave")
     private String Clave;
 
     public int getCodResponsable() {
@@ -62,5 +62,16 @@ public class Responsable_Inicio {
 
     public void setClave(String clave) {
         Clave = clave;
+    }
+
+    @Override
+    public String toString() {
+        return "ResponsableIngreso{" +
+                "CodResponsable=" + CodResponsable +
+                ", Cedula='" + Cedula + '\'' +
+                ", Nombre='" + Nombre + '\'' +
+                ", Apellidos='" + Apellidos + '\'' +
+                ", Clave='" + Clave + '\'' +
+                '}';
     }
 }

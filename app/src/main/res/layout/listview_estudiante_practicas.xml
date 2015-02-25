@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+          android:layout_width="fill_parent"
+          android:layout_height="fill_parent"
+          android:orientation="vertical" >
+
+
+        <LinearLayout
+                android:orientation = "vertical"
+                android:layout_width = "fill_parent"
+                android:layout_height = "fill_parent"
+                >
+
+                <LinearLayout
+                        android:orientation = "horizontal"
+                        android:layout_width = "fill_parent"
+                        android:layout_height = "wrap_content"
+                        android:layout_gravity = "center_horizontal"
+                        android:gravity = "center"
+                        >
+
+                        <ImageView
+                                android:id="@+id/imagen"
+                                android:layout_width="10dp"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="10dp"
+                                android:src="@android:drawable/ic_notification_overlay" />
+
+                        <LinearLayout
+                                android:orientation = "vertical"
+                                android:layout_width = "fill_parent"
+                                android:layout_height = "wrap_content"
+
+
+                                android:paddingRight = "20dp"
+                                >
+
+                                <LinearLayout
+                                        android:orientation = "horizontal"
+                                        android:layout_width = "fill_parent"
+                                        android:layout_height = "fill_parent"
+                                        >
+
+                                        <TextView
+                                                android:layout_width = "wrap_content" android:layout_height = "wrap_content" android:text = "Entidad:" android:id = "@+id/textView13" android:textColor = "@color/brown_800" android:textSize = "@dimen/font_size_Small" android:layout_weight = "0.10"
+                                                />
+
+                                        <TextView
+                                                android:id = "@+id/txtLEEntidad" android:layout_width = "wrap_content" android:layout_height = "wrap_content" android:layout_gravity = "center_vertical" android:textStyle = "bold" android:textColor = "@color/material_blue_grey_800" android:textSize = "@dimen/font_size_Small" android:text = "Entidad" android:layout_weight = "0.50" android:paddingRight = "@dimen/padding_Small"
+                                                />
+
+                                        <TextView
+                                                android:layout_width = "wrap_content" android:layout_height = "wrap_content" android:text = "#Horas" android:id = "@+id/textView16" android:textColor = "@color/brown_800" android:textSize = "@dimen/font_size_Small" android:layout_weight = "0.15"
+                                                />
+
+                                        <TextView
+                                                android:id = "@+id/txtLEEHoras" android:layout_width = "wrap_content" android:layout_height = "wrap_content" android:layout_gravity = "center_vertical" android:textStyle = "bold" android:textColor = "@color/material_blue_grey_800" android:textSize = "@dimen/font_size_Small" android:text = "#Horas" android:layout_weight = "1"
+                                                />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                        android:orientation = "horizontal" android:layout_width = "fill_parent" android:layout_height = "wrap_content"
+                                        >
+
+                                        <TextView
+                                                android:layout_width = "wrap_content" android:layout_height = "wrap_content" android:text = "FechaInicio:" android:id = "@+id/textView15" android:textColor = "@color/brown_800" android:textSize = "@dimen/font_size_Small" android:layout_weight = "0.10"
+                                                />
+
+                                        <TextView
+                                                android:id = "@+id/txtLEFechaInicio" android:layout_width = "wrap_content" android:layout_height = "wrap_content" android:layout_gravity = "center_vertical" android:textStyle = "bold" android:textColor = "@color/material_blue_grey_800" android:textSize = "@dimen/font_size_Small" android:text = "Inicio" android:layout_weight = "0.50" android:paddingRight = "@dimen/padding_Small"
+                                                />
+
+                                        <TextView
+                                                android:layout_width = "wrap_content" android:layout_height = "wrap_content" android:text = "FechaFin" android:id = "@+id/textView18" android:textColor = "@color/brown_800" android:textSize = "@dimen/font_size_Small" android:layout_weight = "0.15"
+                                                />
+
+                                        <TextView
+                                                android:id = "@+id/txtLEFechaFin" android:layout_width = "wrap_content" android:layout_height = "wrap_content" android:layout_gravity = "center_vertical" android:textStyle = "bold" android:textColor = "@color/material_blue_grey_800" android:textSize = "@dimen/font_size_Small" android:text = "Fin" android:layout_weight = "1"
+                                                />
+                                </LinearLayout>
+
+                        </LinearLayout>
+
+                </LinearLayout>
+
+                <FrameLayout
+                        android:layout_width = "fill_parent"
+                        android:layout_height = "2dp"
+                        android:background = "@color/accent"
+                        >
+                </FrameLayout>
+        </LinearLayout>
+
+</LinearLayout>

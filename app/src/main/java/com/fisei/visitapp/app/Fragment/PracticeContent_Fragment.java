@@ -1,13 +1,22 @@
 package com.fisei.visitapp.app.Fragment;
 
+import android.util.Log;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import com.fisei.visitapp.app.R;
-import com.fisei.visitapp.app.dummy.Content;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import com.fisei.visitapp.app.adapter.AdapterEstudiantePracticas;
+import com.fisei.visitapp.app.database.DatabaseManager;
+import com.fisei.visitapp.app.entity.Estudiante;
+import com.fisei.visitapp.app.entity.EstudianteInfo;
+import com.fisei.visitapp.app.entity.PasantiaPracticas;
+
+import java.util.List;
 
 /**
  * Created by diegoztc on 06/02/15.
@@ -25,12 +34,13 @@ public class PracticeContent_Fragment extends Fragment {
         if (savedInstanceState != null){
             codeCC = savedInstanceState.getString("CCEstudiante");
         }
-        return inflater.inflate(R.layout.fragment_practice_content, container, false);
+        return inflater.inflate(R.layout.fragment_info_estudiante, container, false);
     }
     @Override
     public void onStart() {
     // TODO Auto-generated method stub
         super.onStart();
+        DatabaseManager.init(getActivity());
     
     // Comprobamos si tenemos argumentos
         Bundle args = getArguments();
@@ -48,11 +58,40 @@ public class PracticeContent_Fragment extends Fragment {
     }
     public void updateContent(String codeCC){
 
-    // Instanciamos el TextView y establecemos el contenido
-        TextView tvContenido = (TextView)getActivity().findViewById(R.id.tvContenido);
-        tvContenido.setText("Alfa");
+        try {
+            // Instanciamos el TextView y establecemos el contenido
+            EstudianteInfo est = DatabaseManager.getInstance().getEstudianteInfo(codeCC);
 
-    // Guardamos el codigo del elemento que estamos consultando
+            TextView txtENombre = (TextView) getActivity().findViewById(R.id.txtENombre);
+            TextView txtECedula = (TextView) getActivity().findViewById(R.id.txtECedula);
+            TextView txtEEmail = (TextView) getActivity().findViewById(R.id.txtEEmail);
+            TextView txtECarrera = (TextView) getActivity().findViewById(R.id.txtECarrera);
+            TextView txtENumCreditos = (TextView) getActivity().findViewById(R.id.txtENumCreditos);
+            TextView txtEHorasPracticas = (TextView) getActivity().findViewById(R.id.txtEHorasPracticas);
+            TextView txtENumPracticas = (TextView) getActivity().findViewById(R.id.txtENumPracticas);
+
+            txtENombre.setText(est.getNombre());
+            txtECedula.setText(codeCC);
+            txtEEmail.setText(est.getEmail());
+            txtECarrera.setText(est.getCarrera());
+            txtENumCreditos.setText(String.valueOf(est.getNumCreditos()));
+            txtEHorasPracticas.setText(String.valueOf(est.getNumHoras()));
+            txtENumPracticas.setText(String.valueOf(est.getNumPracticas()));
+
+            ListView lstEPracticas = (ListView) getActivity().findViewById(R.id.lstEPracticas);
+
+
+            List<PasantiaPracticas> listaPracticas = DatabaseManager.getInstance().getAllPasantiaPracticasByPasantia(est.getCodPasantia());
+
+
+            lstEPracticas.setAdapter(new AdapterEstudiantePracticas(getActivity(), listaPracticas));
+
+        }catch (Exception ex)
+        {
+            ex.printStackTrace();
+
+        }
+        // Guardamos el codigo del elemento que estamos consultando
         this.codeCC=codeCC;
     }
 

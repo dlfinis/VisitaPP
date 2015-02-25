@@ -2,10 +2,10 @@ package com.fisei.visitapp.app.database;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Environment;
 import android.util.Log;
 import com.fisei.visitapp.app.R;
-import com.fisei.visitapp.app.entity.Estudiante;
-import com.fisei.visitapp.app.entity.Test;
+import com.fisei.visitapp.app.entity.*;
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.RuntimeExceptionDao;
@@ -23,48 +23,21 @@ import java.sql.SQLException;
 public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 
 
+    final String state = Environment.getExternalStorageState();
+
     private static final String DATABASE_NAME = "sppp.db";
-    private static final String DATABASE_PATH = "/data/data/com.fisei.visitapp.app/databases/";
+
     private static final int DATABASE_VERSION =1;
 
     public DatabaseHelper(Context context) {
-        super(context, DATABASE_PATH+DATABASE_NAME, null, DATABASE_VERSION, R.raw.ormlite_config);
-
-        boolean dbexist = checkdatabase();
-        if (!dbexist) {
-
-            // If database did not exist, try copying existing database from assets folder.
-            try {
-                InputStream myinput = context.getAssets().open(DATABASE_NAME);
-                String outfilename = DATABASE_PATH + DATABASE_NAME;
-                Log.i(DatabaseHelper.class.getName(), "DB Path : " + outfilename);
-                OutputStream myoutput = new FileOutputStream(outfilename);
-                byte[] buffer = new byte[1024];
-                int length;
-                while ((length = myinput.read(buffer)) > 0) {
-                    myoutput.write(buffer, 0, length);
-                }
-                myoutput.flush();
-                myoutput.close();
-                myinput.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        DatabaseInitializer initializer = new DatabaseInitializer(context);
+        try {
+            initializer.createDatabase();
+            initializer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-    }
-    /*
-    * Check whether or not database exist
-    */
-    private boolean checkdatabase() {
-        boolean checkdb = false;
-
-        String myPath = DATABASE_PATH + DATABASE_NAME;
-        File dbfile = new File(myPath);
-        checkdb = dbfile.exists();
-
-        Log.i(DatabaseHelper.class.getName(), "DB Exist : " + checkdb);
-
-        return checkdb;
     }
 
     @Override
@@ -109,6 +82,17 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     private Dao<Estudiante,Integer> objectEstudianteDao=null;
     private RuntimeExceptionDao<Estudiante,Integer> objectRuntimeEstudianteDao=null;
 
+    private Dao<ResponsableIngreso,Integer> objectResponsableIngresoDao=null;
+    private RuntimeExceptionDao<ResponsableIngreso,Integer> objectRuntimeResponsableIngresoDao=null;
+    
+    private Dao<EstudianteInfo,Integer> objectEstudianteInfoDao=null;
+    private RuntimeExceptionDao<EstudianteInfo,Integer> objectRuntimeEstudianteInfoDao=null;
+
+    private Dao<PasantiaPracticas,Integer> objectPasantiaPracticasDao=null;
+    private RuntimeExceptionDao<PasantiaPracticas,Integer> objectRuntimePasantiaPracticasDao=null;
+
+
+
     /**
      * Returns the Database Access Object (DAO) for our Test class. It will create it or just give the cached
      * value.
@@ -128,14 +112,36 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
         }
         return objectEstudianteDao;
     }
+   public Dao<ResponsableIngreso,Integer> getResponsableIngresoDao() throws  SQLException{
+        if(objectResponsableIngresoDao ==null)
+        {
+            objectResponsableIngresoDao=getDao(ResponsableIngreso.class);
+        }
+        return objectResponsableIngresoDao;
+    } 
+    
+    public Dao<EstudianteInfo,Integer> getEstudianteInfoDao() throws  SQLException{
+        if(objectEstudianteInfoDao ==null)
+        {
+            objectEstudianteInfoDao=getDao(EstudianteInfo.class);
+        }
+        return objectEstudianteInfoDao;
+    }
+
+    public Dao<PasantiaPracticas,Integer> getPasantiaPracticasDao() throws  SQLException{
+        if(objectPasantiaPracticasDao ==null)
+        {
+            objectPasantiaPracticasDao=getDao(PasantiaPracticas.class);
+        }
+        return objectPasantiaPracticasDao;
+    }
 
     /**
      * Returns the RuntimeExceptionDao (Database Access Object) version of a Dao for our Estudiante class. It will
      * create it or just give the cached value. RuntimeExceptionDao only through RuntimeExceptions.
      */
-    
-    
-    
+
+
     public RuntimeExceptionDao<Test,Integer> getRuntimeTestDao() throws  SQLException{
         if(objectRuntimeTestDao ==null)
         {
@@ -151,6 +157,31 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
         }
         return objectRuntimeEstudianteDao;
     }
+
+    public RuntimeExceptionDao<ResponsableIngreso,Integer> getRuntimeResponsableIngresoDao() throws  SQLException{
+        if(objectRuntimeResponsableIngresoDao ==null)
+        {
+            objectRuntimeResponsableIngresoDao=getRuntimeExceptionDao(ResponsableIngreso.class);
+        }
+        return objectRuntimeResponsableIngresoDao;
+    }
+    
+    public RuntimeExceptionDao<EstudianteInfo,Integer> getRuntimeEstudianteInfoDao() throws  SQLException{
+        if(objectRuntimeEstudianteInfoDao ==null)
+        {
+            objectRuntimeEstudianteInfoDao=getRuntimeExceptionDao(EstudianteInfo.class);
+        }
+        return objectRuntimeEstudianteInfoDao;
+    }
+
+    public RuntimeExceptionDao<PasantiaPracticas,Integer> getRuntimePasantiaPracticasDao() throws  SQLException{
+        if(objectRuntimePasantiaPracticasDao ==null)
+        {
+            objectRuntimePasantiaPracticasDao=getRuntimeExceptionDao(PasantiaPracticas.class);
+        }
+        return objectRuntimePasantiaPracticasDao;
+    }
+
 
 
 

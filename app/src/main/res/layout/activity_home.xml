@@ -1,5 +1,5 @@
 <LinearLayout xmlns:android = "http://schemas.android.com/apk/res/android"
-                android:layout_width = "match_parent"
+              xmlns:tools = "http://schemas.android.com/tools" android:layout_width = "match_parent"
                 android:layout_height = "fill_parent"
                 android:paddingLeft = "@dimen/activity_horizontal_margin"
                 android:paddingRight = "@dimen/activity_horizontal_margin"
@@ -7,19 +7,25 @@
                 android:paddingBottom = "@dimen/activity_vertical_margin"
                 android:orientation = "vertical"
                 android:gravity = "center_vertical|center|center_horizontal"
+              tools:context = ".HomeActivity"
         >
 
     <TextView
             android:layout_width = "wrap_content"
             android:layout_height = "wrap_content"
             android:textAppearance = "?android:attr/textAppearanceLarge"
-            android:text = "@string/name_user"
-            android:id = "@+id/txtName"
-            android:textColor = "@color/abc_primary_text_material_light"
-            android:textStyle = "bold"
+            android:text = "@string/greeting"
+            android:id = "@+id/txtSaludo"
+            android:textColor = "@color/accent"
             android:textSize = "@dimen/abc_text_size_display_1_material"
-            android:layout_weight = "1.50"
             android:gravity = "center_vertical"
+            android:textStyle = "bold"
+            android:paddingTop = "60dp"
+            />
+
+    <TextView
+            android:layout_width = "wrap_content" android:layout_height = "wrap_content" android:textAppearance = "?android:attr/textAppearanceLarge" android:text = "Usuario" android:id = "@+id/txtHNombre" android:textColor = "@color/secondary" android:textSize = "@dimen/font_size_normal" android:gravity = "center_vertical" android:textStyle = "italic"
+            android:paddingBottom = "50dp"
             />
 
     <LinearLayout
@@ -37,8 +43,8 @@
                 android:layout_width = "fill_parent"
                 android:layout_height = "wrap_content"
                 android:text = "@string/student"
-                android:id = "@+id/btnStudent"
-                android:background = "@color/button_material_light"
+                android:id = "@+id/btnHEstudiante"
+                android:background = "@color/blue_grey_100"
                 android:layout_marginBottom = "@dimen/padding_Medium"
                 android:textSize = "@dimen/font_size_normal"
                 android:textStyle = "bold"
@@ -49,8 +55,8 @@
                 android:layout_width = "fill_parent"
                 android:layout_height = "wrap_content"
                 android:text = "@string/visit"
-                android:id = "@+id/btnVisit"
-                android:background = "@color/button_material_dark"
+                android:id = "@+id/btnHVisita"
+                android:background = "@color/light_blue_700"
                 android:layout_marginBottom = "@dimen/padding_Medium"
                 android:textSize = "@dimen/font_size_normal"
                 android:textStyle = "bold"
@@ -66,6 +72,11 @@
                 android:layout_marginBottom = "@dimen/padding_Medium"
                 android:textSize = "@dimen/font_size_normal"
                 android:textStyle = "bold"
+                android:visibility = "invisible"
+                />
+
+        <Button
+                style = "?android:attr/buttonStyleSmall" android:layout_width = "fill_parent" android:layout_height = "wrap_content" android:text = "Salir" android:id = "@+id/btnHSalir" android:background = "@color/button_material_dark" android:layout_marginBottom = "@dimen/padding_Medium" android:textSize = "@dimen/font_size_normal" android:textStyle = "bold"
                 />
 
     </LinearLayout>

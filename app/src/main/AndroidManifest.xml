@@ -2,11 +2,17 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.fisei.visitapp.app" >
 
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!--<uses-permission android:name = "android.permission.set_debug_app"/>-->
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+        
         <activity
             android:name="com.fisei.visitapp.app.SplashActivity"
             android:label="@string/app_name"
@@ -32,6 +38,14 @@
         <activity
             android:name="com.fisei.visitapp.app.TestActivity"
             android:label="@string/title_activity_test" >
+        </activity>
+        <activity
+            android:name=".VisitaSistemasActivity"
+            android:label="@string/title_activity_visita" >
+        </activity>
+        <activity
+            android:name="com.fisei.visitapp.app.SeleccionVisitaActivity"
+            android:label="@string/title_activity_seleccion_visita" >
         </activity>
     </application>
 

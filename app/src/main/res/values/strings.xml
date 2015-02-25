@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">TangoBravo</string>
+    <string name="app_name">VisitaPP</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="password">Contraseña</string>
@@ -16,12 +16,57 @@
     <string name="title_activity_login">LoginActivity</string>
     <string name="accept">Aceptar</string>
     <string name="cancel">Cancelar</string>
-    <string name="title_activity_home">HomeActivity</string>
-    <string name="name_user">Hola,...</string>
+    <string name="title_activity_home">Inicio</string>
+    <string name="greeting">Bienvenido...</string>
     <string name="student">Estudiantes</string>
     <string name="visit">Visita</string>
     <string name="practices">Practica</string>
     <string name="title_activity_practica">PracticaActivity</string>
     <string name="title_activity_test">TestActivity</string>
+    <string name="title_activity_visita">Visita</string>
+    <string name="pregunta1">¿Cumple con el trabajo ordenado?</string>
+    <string name="preg2">¿Cumple puntualmente con su trabajo?</string>
+    <string name="preg3">¿Pensaria usted en volver a solicitar pasantes de la FISEI?</string>
+    <string name="title_activity_seleccion_visita">SeleccionVisitaActivity</string>
+    <string name = "ops1">Desarrollo de programas de escritorio/web/móviles</string>
+    <string name = "ops2">Desarrollo de sistemas de información de escritorio/web</string>
+    <string name = "ops3">Administración de Sistemas Operativos/Servidores</string>
+    <string name = "ops4">Soporte técnico y/o mantenimiento equipos y/o redes</string>
+    <string name = "ops5">Diseño e implantación de Redes Intranet / Extranet</string>
+    <string name = "ops6">Diseño, Desarrollo y Administración de Base de datos</string>
+    <string name = "ops7">Desarrollo de auditorías informáticas / planes estratégicos</string>
+    <string name = "ops8">Desarrollo de soluciones como soporte a la toma de decisiones</string>
 
+    <string name = "ope1">Desarrollo de programas de escritorio/web/móviles</string>
+    <string name = "ope2">Desarrollo de sistemas de información de escritorio/web</string>
+    <string name = "ope3">Administración de Sistemas Operativos/Servidores</string>
+    <string name = "ope4">Soporte técnico y/o mantenimiento equipos y/o redes</string>
+    <string name = "ope5">Diseño e implantación de Redes Intranet / Extranet</string>
+    <string name = "ope6">Diseño, Desarrollo y Administración de Base de datos</string>
+    <string name = "ope7">Desarrollo de auditorías informáticas / planes estratégicos</string>
+    <string name = "ope8">Desarrollo de soluciones como soporte a la toma de decisiones</string>
+
+
+    <string name = "opi1">Desarrollo de programas de escritorio/web/móviles</string>
+    <string name = "opi2">Desarrollo de sistemas de información de escritorio/web</string>
+    <string name = "opi3">Administración de Sistemas Operativos/Servidores</string>
+    <string name = "opi4">Soporte técnico y/o mantenimiento equipos y/o redes</string>
+    <string name = "opi5">Diseño e implantación de Redes Intranet / Extranet</string>
+    <string name = "opi6">Diseño, Desarrollo y Administración de Base de datos</string>
+    <string name = "opi7">Desarrollo de auditorías informáticas / planes estratégicos</string>
+    <string name = "opi8">Desarrollo de soluciones como soporte a la toma de decisiones</string>
+
+
+
+    <string-array name="carrera">
+        <item>Sistemas</item>
+        <item>Electronica</item>
+        <item>Industrial</item>
+    </string-array>
+
+    <string-array name="estudiante">
+        <item>Echo Alfa</item>
+        <item>Fox Troot</item>
+        <item>Beta Gamma</item>
+    </string-array>
 </resources>

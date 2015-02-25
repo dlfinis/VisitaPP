@@ -30,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="number"
                 android:ems="15"
-                android:id="@+id/editText"
+                android:id="@+id/edtLCedula"
                 android:backgroundTint="#ff538aff"
                 android:backgroundTintMode="src_atop"
                 />
@@ -60,7 +60,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
                 android:ems="10"
-                android:id="@+id/editText2"
+                android:id="@+id/edtLClave"
                 android:backgroundTint="#ff538aff"
                 android:backgroundTintMode="src_atop"
                 />
@@ -78,7 +78,7 @@
                 android:layout_width = "fill_parent"
                 android:layout_height = "wrap_content"
                 android:text = "@string/accept"
-                android:id = "@+id/btnAceptar"
+                android:id = "@+id/btnLAceptar"
                 android:layout_weight = "1"
                 android:enabled = "true"
                 android:background = "@color/button_material_light"
@@ -88,7 +88,7 @@
                 android:layout_width = "fill_parent"
                 android:layout_height = "wrap_content"
                 android:text = "@string/cancel"
-                android:id = "@+id/btnCancelar"
+                android:id = "@+id/btnLCancelar"
                 android:layout_weight = "1"
                 android:background = "@color/button_material_dark"
                 />
