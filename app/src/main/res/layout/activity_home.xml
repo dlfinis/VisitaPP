@@ -8,7 +8,7 @@
                 android:orientation = "vertical"
                 android:gravity = "center_vertical|center|center_horizontal"
               tools:context = ".HomeActivity"
-        >
+              android:background="@color/background_material_light">
 
     <TextView
             android:layout_width = "wrap_content"
@@ -16,7 +16,7 @@
             android:textAppearance = "?android:attr/textAppearanceLarge"
             android:text = "@string/greeting"
             android:id = "@+id/txtSaludo"
-            android:textColor = "@color/accent"
+            android:textColor = "@color/abc_primary_text_material_light"
             android:textSize = "@dimen/abc_text_size_display_1_material"
             android:gravity = "center_vertical"
             android:textStyle = "bold"
@@ -24,7 +24,7 @@
             />
 
     <TextView
-            android:layout_width = "wrap_content" android:layout_height = "wrap_content" android:textAppearance = "?android:attr/textAppearanceLarge" android:text = "Usuario" android:id = "@+id/txtHNombre" android:textColor = "@color/secondary" android:textSize = "@dimen/font_size_normal" android:gravity = "center_vertical" android:textStyle = "italic"
+            android:layout_width = "wrap_content" android:layout_height = "wrap_content" android:textAppearance = "?android:attr/textAppearanceLarge" android:text = "Usuario" android:id = "@+id/txtHNombre" android:textColor = "@color/abc_secondary_text_material_light" android:textSize = "@dimen/font_size_normal" android:gravity = "center_vertical" android:textStyle = "italic"
             android:paddingBottom = "50dp"
             />
 
@@ -44,7 +44,7 @@
                 android:layout_height = "wrap_content"
                 android:text = "@string/student"
                 android:id = "@+id/btnHEstudiante"
-                android:background = "@color/blue_grey_100"
+                android:background = "@color/primary"
                 android:layout_marginBottom = "@dimen/padding_Medium"
                 android:textSize = "@dimen/font_size_normal"
                 android:textStyle = "bold"
@@ -56,7 +56,7 @@
                 android:layout_height = "wrap_content"
                 android:text = "@string/visit"
                 android:id = "@+id/btnHVisita"
-                android:background = "@color/light_blue_700"
+                android:background = "@color/primary"
                 android:layout_marginBottom = "@dimen/padding_Medium"
                 android:textSize = "@dimen/font_size_normal"
                 android:textStyle = "bold"

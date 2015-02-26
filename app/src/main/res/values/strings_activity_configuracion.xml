@@ -1,0 +1,28 @@
+<resources>
+    <string name="title_activity_configuracion">Configuración</string>
+
+    <string name="pref_titulo_usuario">Ingreso de Usuario:</string>
+
+
+
+    <string name="pref_header_general">General</string>
+
+
+    <string name="pref_cc">Número de Ciudadanía:</string>
+    <string name="pref_default_cc"></string>
+    <string name="pref_summary_cc">Ingrese su número de ciudadanía</string>
+
+
+    <string name="pref_clave">Clave de Ingreso:</string>
+    <string name="pref_default_clave"></string>
+    <string name="pref_summary_clave">Ingrese su clave.
+        Son los dos primeros dígitos de su cédula con su la 1era letra de su apellido y de su nombre</string>
+
+    <string name="pref_sincronizacion">Sincronización</string>
+    <string name="pref_summary_sincronizacion">Subida y descarga de datos de las BDs.</string>
+
+    <string name="pref_titulo_datos">Datos</string>
+
+
+
+</resources>

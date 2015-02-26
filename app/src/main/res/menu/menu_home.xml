@@ -2,8 +2,19 @@
       xmlns:app = "http://schemas.android.com/apk/res-auto"
       xmlns:tools = "http://schemas.android.com/tools"
       tools:context = "com.fisei.visitapp.app.HomeActivity">
-	<item android:id = "@+id/action_settings"
-	      android:title = "@string/action_settings"
+
+    <item android:id = "@+id/home_configuracion"
+	      android:title = "@string/home_menu_item_configuracion"
 	      android:orderInCategory = "100"
-	      app:showAsAction = "never"/>
+	      app:showAsAction = "always|withText"
+            android:icon="@android:drawable/ic_menu_manage"/>
+
+    <item android:id = "@+id/home_sincronizar"
+          android:title = "@string/home_menu_item_sincronizar"
+          android:orderInCategory = "200"
+          app:showAsAction = "always|withText"
+          android:icon="@android:drawable/stat_notify_sync"/>
+
+
+
 </menu>

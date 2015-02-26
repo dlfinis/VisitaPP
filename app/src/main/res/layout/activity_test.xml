@@ -53,6 +53,35 @@
             android:layout_height = "wrap_content"
             >
 
+        <Button
+                android:layout_width = "wrap_content"
+                android:layout_height = "wrap_content"
+                android:text = "OK"
+                android:id = "@+id/btnTOk"
+                android:layout_weight="1"/>
+
+        <Button
+                android:layout_width = "wrap_content"
+                android:layout_height = "wrap_content"
+                android:text = "Cancel"
+                android:id = "@+id/btnTCancel"
+                android:layout_weight="1"/>
+
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageView2"
+                android:layout_weight="1"
+                android:src="@android:drawable/stat_notify_sync"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:orientation = "horizontal"
+            android:layout_width = "fill_parent"
+            android:layout_height = "wrap_content"
+            >
+
         <ListView
                 android:layout_width = "wrap_content"
                 android:layout_height = "wrap_content"
@@ -66,28 +95,6 @@
                 android:id = "@+id/imvImagen"
                 android:layout_weight = "1"
                 android:scaleType = "fitCenter"
-                />
-
-    </LinearLayout>
-
-    <LinearLayout
-            android:orientation = "horizontal"
-            android:layout_width = "fill_parent"
-            android:layout_height = "wrap_content"
-            >
-
-        <Button
-                android:layout_width = "wrap_content"
-                android:layout_height = "wrap_content"
-                android:text = "OK"
-                android:id = "@+id/btnTOk"
-                />
-
-        <Button
-                android:layout_width = "wrap_content"
-                android:layout_height = "wrap_content"
-                android:text = "Cancel"
-                android:id = "@+id/btnTCancel"
                 />
 
     </LinearLayout>
