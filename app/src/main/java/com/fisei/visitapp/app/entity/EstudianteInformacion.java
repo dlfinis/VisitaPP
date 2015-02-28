@@ -28,6 +28,9 @@ public class EstudianteInformacion {
     private String Movil;
 
     @DatabaseField
+    private String Convencional;
+
+    @DatabaseField
     private String Email;
 
     @DatabaseField
@@ -84,6 +87,14 @@ public class EstudianteInformacion {
 
     public void setApellidos(String apellidos) {
         Apellidos = apellidos;
+    }
+
+    public String getConvencional() {
+        return Convencional;
+    }
+
+    public void setConvencional(String convencional) {
+        Convencional = convencional;
     }
 
     public String getMovil() {
@@ -174,6 +185,7 @@ public class EstudianteInformacion {
                 ", Nombres='" + Nombres + '\'' +
                 ", Apellidos='" + Apellidos + '\'' +
                 ", Sexo='" + Sexo + '\'' +
+                ", Convencional='" + Convencional + '\'' +
                 ", Movil='" + Movil + '\'' +
                 ", Email='" + Email + '\'' +
                 ", Carrera='" + Carrera + '\'' +

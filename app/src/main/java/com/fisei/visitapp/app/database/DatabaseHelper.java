@@ -4,11 +4,15 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Environment;
 import android.util.Log;
+import com.fisei.visitapp.app.R;
 import com.fisei.visitapp.app.entity.*;
+import com.j256.ormlite.android.AndroidConnectionSource;
+import com.j256.ormlite.android.AndroidDatabaseConnection;
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.RuntimeExceptionDao;
 import com.j256.ormlite.support.ConnectionSource;
+import com.j256.ormlite.support.DatabaseConnection;
 import com.j256.ormlite.table.TableUtils;
 
 import java.io.*;
@@ -22,7 +26,7 @@ import java.sql.SQLException;
 public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 
 
-    private final String stmt_lista_estudiantes="";
+    protected AndroidConnectionSource connectionSource = new AndroidConnectionSource(this);
 
     final String state = Environment.getExternalStorageState();
 
@@ -31,14 +35,14 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     private static final int DATABASE_VERSION =1;
 
     public DatabaseHelper(Context context) {
-        super(context, DATABASE_NAME, null, DATABASE_VERSION);
-        DatabaseInitializer initializer = new DatabaseInitializer(context);
-        try {
-            initializer.createDatabase();
-            initializer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        super(context, DATABASE_NAME, null, DATABASE_VERSION,R.raw.ormlite_config);
+//        DatabaseInitializer initializer = new DatabaseInitializer(context);
+//        try {
+//            initializer.createDatabase();
+//            initializer.close();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
     }
 
     @Override
@@ -47,11 +51,17 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
             Log.i(DatabaseHelper.class.getName(), "onCreate");
             TableUtils.createTableIfNotExists(connectionSource, Test.class);
             TableUtils.createTableIfNotExists(connectionSource, EstudianteInformacion.class);
+            TableUtils.createTableIfNotExists(connectionSource, PasantiaPracticas.class);
+            TableUtils.createTableIfNotExists(connectionSource, ResponsableIngreso.class);
+            TableUtils.createTableIfNotExists(connectionSource, VisitaPractica.class);
         } catch (SQLException e) {
             Log.e(DatabaseHelper.class.getName(), "Can't create database", e);
             throw new RuntimeException(e);
         }
     }
+
+
+
 
     @Override
     public void onUpgrade(SQLiteDatabase db, ConnectionSource connectionSource, int oldVersion, int newVersion) {
@@ -59,7 +69,10 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
             Log.i(DatabaseHelper.class.getName(), "onUpgrade");
             TableUtils.dropTable(connectionSource, Test.class, true);
             TableUtils.dropTable(connectionSource, EstudianteInformacion.class, true);
-            onCreate(db);
+            TableUtils.dropTable(connectionSource, PasantiaPracticas.class, true);
+            TableUtils.dropTable(connectionSource, VisitaPractica.class, true);
+            TableUtils.dropTable(connectionSource, ResponsableIngreso.class, true);
+            onCreate(db,connectionSource);
         } catch (SQLException e) {
             Log.e(DatabaseHelper.class.getName(), "Can't drop databases", e);
             throw new RuntimeException(e);
@@ -72,6 +85,16 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
         super.close();
         objectTestDao=null;
         objectRuntimeTestDao=null;
+        objectEstudianteInformacionDao=null;
+        objectPasantiaPracticasDao=null;
+        objectResponsableIngresoDao=null;
+        objectVisitaPracticaDao=null;
+
+        objectRuntimeEstudianteInformacionDao=null;
+        objectRuntimePasantiaPracticasDao=null;
+        objectRuntimeResponsableIngresoDao=null;
+        objectRuntimeVisitaPracticaDao=null;
+
     }
 
     //Objetos Dao
@@ -90,6 +113,10 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     private Dao<PasantiaPracticas,Integer> objectPasantiaPracticasDao=null;
     private RuntimeExceptionDao<PasantiaPracticas,Integer> objectRuntimePasantiaPracticasDao=null;
 
+    private Dao<VisitaPractica,Integer> objectVisitaPracticaDao=null;
+    private RuntimeExceptionDao<VisitaPractica,Integer> objectRuntimeVisitaPracticaDao=null;
+
+    
 
 
     /**
@@ -127,6 +154,14 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
             objectPasantiaPracticasDao=getDao(PasantiaPracticas.class);
         }
         return objectPasantiaPracticasDao;
+    } 
+    
+    public Dao<VisitaPractica,Integer> getVisitaPracticaDao() throws  SQLException{
+        if(objectVisitaPracticaDao ==null)
+        {
+            objectVisitaPracticaDao=getDao(VisitaPractica.class);
+        }
+        return objectVisitaPracticaDao;
     }
 
     /**
@@ -165,6 +200,14 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
             objectRuntimePasantiaPracticasDao=getRuntimeExceptionDao(PasantiaPracticas.class);
         }
         return objectRuntimePasantiaPracticasDao;
+    } 
+    
+    public RuntimeExceptionDao<VisitaPractica,Integer> getRuntimeVisitaPracticaDao() throws  SQLException{
+        if(objectRuntimeVisitaPracticaDao ==null)
+        {
+            objectRuntimeVisitaPracticaDao=getRuntimeExceptionDao(VisitaPractica.class);
+        }
+        return objectRuntimeVisitaPracticaDao;
     }
 
 

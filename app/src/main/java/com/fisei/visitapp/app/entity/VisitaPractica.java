@@ -10,14 +10,17 @@ import java.util.Arrays;
  * Created by diegoztc on 25/02/15.
  */
 @DatabaseTable(tableName = "vw_visita_practica")
-public class Visita {
+public class VisitaPractica {
 
 
-    @DatabaseField(id=true,generatedId = true,columnName = "CodVisita")
+    @DatabaseField(id = true,columnName = "CodVisita")
     private int CodVisita;
 
     @DatabaseField(columnName = "CodPractica")
     private int CodPractica;
+
+    @DatabaseField(columnName = "CCResponsable")
+    private String CCResponsable;
 
     @DatabaseField(defaultValue = "Ninguna")
     private String Observaciones;
@@ -59,6 +62,14 @@ public class Visita {
 
     public void setCodPractica(int codPractica) {
         CodPractica = codPractica;
+    }
+
+    public String getCCResponsable() {
+        return CCResponsable;
+    }
+
+    public void setCCResponsable(String CCResponsable) {
+        this.CCResponsable = CCResponsable;
     }
 
     public String getObservaciones() {

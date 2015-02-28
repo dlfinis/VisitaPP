@@ -9,11 +9,6 @@
 	      app:showAsAction = "always|withText"
             android:icon="@android:drawable/ic_menu_manage"/>
 
-    <item android:id = "@+id/home_sincronizar"
-          android:title = "@string/home_menu_item_sincronizar"
-          android:orderInCategory = "200"
-          app:showAsAction = "always|withText"
-          android:icon="@android:drawable/stat_notify_sync"/>
 
 
 

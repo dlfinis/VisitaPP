@@ -15,11 +15,11 @@ public class PasantiaPracticas {
     @DatabaseField(columnName = "CodPasantia")
     private int CodPasantia;
 
-    @DatabaseField(columnName = "CodEst")
-    private int CodEst;
+    @DatabaseField(columnName = "CodEstudiante")
+    private int CodEstudiante;
 
     @DatabaseField
-    private String CodResponsable;
+    private int CodResponsable;
 
     @DatabaseField
     private String CCResponsable;
@@ -57,19 +57,19 @@ public class PasantiaPracticas {
         CodPasantia = codPasantia;
     }
 
-    public int getCodEst() {
-        return CodEst;
+    public int getCodEstudiante() {
+        return CodEstudiante;
     }
 
-    public void setCodEst(int codEst) {
-        CodEst = codEst;
+    public void setCodEstudiante(int codEstudiante) {
+        CodEstudiante = codEstudiante;
     }
 
-    public String getCodResponsable() {
+    public int getCodResponsable() {
         return CodResponsable;
     }
 
-    public void setCodResponsable(String codResponsable) {
+    public void setCodResponsable(int codResponsable) {
         CodResponsable = codResponsable;
     }
 
@@ -126,7 +126,7 @@ public class PasantiaPracticas {
         return "PasantiaPracticas{" +
                 "CodPractica=" + CodPractica +
                 ", CodPasantia=" + CodPasantia +
-                ", CodEst=" + CodEst +
+                ", CodEstudiante=" + CodEstudiante +
                 ", CodResponsable='" + CodResponsable + '\'' +
                 ", CCResponsable='" + CCResponsable + '\'' +
                 ", Entidad='" + Entidad + '\'' +

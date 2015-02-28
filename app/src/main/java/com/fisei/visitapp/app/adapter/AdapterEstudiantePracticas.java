@@ -52,11 +52,13 @@ public class AdapterEstudiantePracticas extends ArrayAdapter {
         TextView horas=(TextView) item.findViewById(R.id.txtLEEHoras);
         TextView finicio=(TextView) item.findViewById(R.id.txtLEFechaInicio);
         TextView ffin=(TextView) item.findViewById(R.id.txtLEFechaFin);
+        TextView estado=(TextView) item.findViewById(R.id.txtLEEstado);
 
         entidad.setText(practica.getEntidad());
         horas.setText(String.valueOf(practica.getHorasPracticas()));
         finicio.setText(String.valueOf(practica.getFechaInicio()));
         ffin.setText(String.valueOf(practica.getFechaFin()));
+        estado.setText(String.valueOf(practica.getEstado()));
 
         return item;
     }

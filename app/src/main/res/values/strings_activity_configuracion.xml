@@ -23,6 +23,21 @@
 
     <string name="pref_titulo_datos">Datos</string>
 
+    <string name="pref_direccion">Dirección IP:</string>
+    <string name="pref_default_direccion">10.0.2.2</string>
+    <string name="pref_summary_direccion">Dirección IP de red del servidor de base de datos local.
+    </string>
 
+    <string name="pref_puerto">Puerto:</string>
+    <string name="pref_default_puerto">5432</string>
+    <string name="pref_summary_puerto">Puerto de acceso a la base de datos</string>
+
+    <string name="pref_usuarioBD">Usuario de BD:</string>
+    <string name="pref_default_usuarioBD">postgres</string>
+    <string name="pref_summary_usuarioBD">Nombre de usuario que se puede conectar a la BD.</string>
+
+    <string name="pref_claveBD">Clave de BD:</string>
+    <string name="pref_default_claveBD">postgres</string>
+    <string name="pref_summary_claveBD">Clave de usuario con conexion a BD.</string>
 
 </resources>

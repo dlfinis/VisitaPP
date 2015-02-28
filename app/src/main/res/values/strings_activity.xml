@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="false_coneccion_wifi">No posee una conexión de Wifi valida.Conectese.</string>
+    <string name="true_coneccion_wifi">Conexión Valida de Wifi</string>
+</resources>

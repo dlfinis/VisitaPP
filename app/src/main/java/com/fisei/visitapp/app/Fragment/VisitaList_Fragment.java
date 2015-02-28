@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.util.Log;
 import android.view.View;
-import android.widget.*;
+import android.widget.ListView;
 import com.fisei.visitapp.app.adapter.AdapterEstudiantesInformacion;
 import com.fisei.visitapp.app.database.DatabaseManager;
 import com.fisei.visitapp.app.entity.EstudianteInformacion;
@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * Created by diegoztc on 06/02/15.
  */
-public class PracticeList_Fragment extends ListFragment {
+public class VisitaList_Fragment extends ListFragment {
 
 
         onEstudianteSelectedListener mCallback;
@@ -28,31 +28,23 @@ public class PracticeList_Fragment extends ListFragment {
 
          private List<EstudianteInformacion> getListaEstudiantes(){
              Bundle args = getArguments();
-             if (args != null){
-                String ccResponsable=args.getString("ccResponsable");
-                 List<EstudianteInformacion> listaEstudiantes =
-                         DatabaseManager.getInstance().getAllEstudiantesInformacionByResponsable(ccResponsable);
-                 return listaEstudiantes;
-             }else {
-                 List<EstudianteInformacion> listaEstudiantes = DatabaseManager.getInstance().getAllEstudiantesInformacion();
-                 return listaEstudiantes;
+             List<EstudianteInformacion> listaEstudiantes = null;
+             if (args != null) {
+                 String ccResponsable = args.getString("ccResponsable");
+                 String proceso= args.getString("Proceso");
+                 listaEstudiantes =
+                         DatabaseManager.getInstance().getAllEstudiantesInformacionByProceso(ccResponsable,proceso);
+
              }
 
-
-
-        }
+             return listaEstudiantes;
+         }
 
         @Override
         public void onCreate(Bundle savedInstanceState) {
             // TODO Auto-generated method stub
             super.onCreate(savedInstanceState);
             DatabaseManager.init(getActivity());
-
-
-            // Establecemos el Adapter cuando se crea el Fragment
-//            setListAdapter(new ArrayAdapter<Estudiante>(getActivity(),
-//                    android.R.layout.simple_list_item_1,ListaEstudiantes));
-
             setListAdapter(new AdapterEstudiantesInformacion(getActivity(),getListaEstudiantes()));
 
 

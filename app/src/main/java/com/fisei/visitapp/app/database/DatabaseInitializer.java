@@ -28,7 +28,7 @@ public class DatabaseInitializer extends SQLiteOpenHelper {
         public void createDatabase() throws IOException {
             boolean dbExist = checkDatabase();
             if(!dbExist){
-                this.getReadableDatabase();
+                this.getWritableDatabase();
                 try {
                     copyDatabase();
                 } catch (IOException e) {

@@ -53,7 +53,7 @@
 
         <LinearLayout
                 android:orientation = "horizontal"
-                android:layout_width = "match_parent"
+                android:layout_width = "fill_parent"
                 android:layout_height = "wrap_content"
                 android:layout_gravity = "center_horizontal"
                 android:paddingBottom = "@dimen/padding_Small"
@@ -73,7 +73,8 @@
             <TextView
                     android:id = "@+id/txtENombre" android:layout_width = "fill_parent" android:layout_height = "wrap_content" android:layout_gravity = "center_vertical" android:textStyle = "bold" android:textColor = "@color/material_blue_grey_800" android:textSize = "@dimen/font_size_Small" android:text = "Nombre"
                     android:paddingLeft = "@dimen/padding_Small"
-                    />
+                    android:maxLines="2"
+                    android:lines="2"/>
 
         </LinearLayout>
 
@@ -84,25 +85,27 @@
                 >
 
             <TextView
-                    android:layout_width = "wrap_content" android:layout_height = "wrap_content" android:text = "Cedula:" android:id = "@+id/textView8" android:textColor = "@color/brown_500" android:textSize = "@dimen/font_size_Small" android:textStyle = "bold"
-                    android:layout_weight = "0.10"
+                    android:layout_width = "fill_parent" android:layout_height = "wrap_content" android:text = "Cedula:" android:id = "@+id/textView8" android:textColor = "@color/brown_500" android:textSize = "@dimen/font_size_Small" android:textStyle = "bold"
+                    android:layout_weight = "0.24"
                     />
 
             <TextView
-                    android:id = "@+id/txtECedula" android:layout_width = "wrap_content" android:layout_height = "wrap_content" android:layout_gravity = "center_vertical" android:textStyle = "bold" android:textColor = "@color/material_blue_grey_800" android:textSize = "@dimen/font_size_Small"
+                    android:id = "@+id/txtECedula" android:layout_width = "fill_parent" android:layout_height = "wrap_content"
+                    android:textStyle = "bold" android:textColor = "@color/material_blue_grey_800" android:textSize = "@dimen/font_size_Small"
                     android:text = "Cedula"
-                    android:layout_weight = "0.50"
+                    android:layout_weight = "0.20"
                     android:paddingRight = "@dimen/padding_Small"
                     />
 
             <TextView
-                    android:layout_width = "wrap_content" android:layout_height = "wrap_content" android:text = "Email:" android:id = "@+id/textView7" android:textColor = "@color/brown_500" android:textSize = "@dimen/font_size_Small" android:textStyle = "bold"
-                    android:layout_weight = "0.15"
+                    android:layout_width = "fill_parent" android:layout_height = "wrap_content" android:text = "Email:" android:id = "@+id/textView7" android:textColor = "@color/brown_500" android:textSize = "@dimen/font_size_Small" android:textStyle = "bold"
+                    android:layout_weight = "0.24"
                     />
 
             <TextView
-                    android:id = "@+id/txtEEmail" android:layout_width = "wrap_content" android:layout_height = "wrap_content" android:layout_gravity = "center_vertical" android:textStyle = "bold" android:textColor = "@color/material_blue_grey_800" android:textSize = "@dimen/font_size_Small" android:text = "Email"
-                    android:layout_weight = "1"
+                    android:id = "@+id/txtEEmail" android:layout_width = "fill_parent" android:layout_height = "wrap_content"
+                    android:textStyle = "bold" android:textColor = "@color/material_blue_grey_800" android:textSize = "@dimen/font_size_Small" android:text = "Email"
+                    android:layout_weight = "0.15"
                     />
         </LinearLayout>
 
@@ -111,20 +114,23 @@
                 >
 
             <TextView
-                    android:layout_width = "wrap_content" android:layout_height = "wrap_content" android:text = "#Creditos:" android:id = "@+id/textView9" android:textColor = "@color/brown_500" android:textSize = "@dimen/font_size_Small" android:textStyle = "bold" android:layout_weight = "0.10"
+                    android:layout_width = "wrap_content" android:layout_height = "wrap_content" android:text = "#Creditos:" android:id = "@+id/textView9" android:textColor = "@color/brown_500" android:textSize = "@dimen/font_size_Small" android:textStyle = "bold"
                     />
 
             <TextView
-                    android:id = "@+id/txtENumCreditos" android:layout_width = "wrap_content" android:layout_height = "wrap_content" android:layout_gravity = "center_vertical" android:textStyle = "bold" android:textColor = "@color/material_blue_grey_800" android:textSize = "@dimen/font_size_Small" android:text = "#NCreditos" android:layout_weight = "0.50" android:paddingRight = "@dimen/padding_Small"
+                    android:id = "@+id/txtENumCreditos" android:layout_width = "fill_parent" android:layout_height = "fill_parent"
+                    android:textStyle = "bold" android:textColor = "@color/material_blue_grey_800" android:textSize = "@dimen/font_size_Small" android:text = "#NCreditos"
+                    android:paddingRight = "@dimen/padding_Small"
+                    android:layout_weight="1"/>
+
+            <TextView
+                    android:layout_width = "wrap_content" android:layout_height = "wrap_content" android:text = "Carrera:" android:id = "@+id/textView12" android:textColor = "@color/brown_500" android:textSize = "@dimen/font_size_Small" android:textStyle = "bold"
                     />
 
             <TextView
-                    android:layout_width = "wrap_content" android:layout_height = "wrap_content" android:text = "Carrera:" android:id = "@+id/textView12" android:textColor = "@color/brown_500" android:textSize = "@dimen/font_size_Small" android:textStyle = "bold" android:layout_weight = "0.15"
-                    />
-
-            <TextView
-                    android:id = "@+id/txtECarrera" android:layout_width = "wrap_content" android:layout_height = "wrap_content" android:layout_gravity = "center_vertical" android:textStyle = "bold" android:textColor = "@color/material_blue_grey_800" android:textSize = "@dimen/font_size_Small" android:text = "Carrera" android:layout_weight = "1"
-                    />
+                    android:id = "@+id/txtECarrera" android:layout_width = "fill_parent" android:layout_height = "fill_parent"
+                    android:textStyle = "bold" android:textColor = "@color/material_blue_grey_800" android:textSize = "@dimen/font_size_Small" android:text = "Carrera"
+                    android:layout_weight="1"/>
         </LinearLayout>
 
         <LinearLayout

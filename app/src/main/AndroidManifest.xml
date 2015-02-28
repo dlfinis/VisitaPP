@@ -6,6 +6,10 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
+    <uses-feature android:name="android.hardware.camera" />
 
     <!-- <uses-permission android:name = "android.permission.set_debug_app"/> -->
     <application
@@ -22,10 +26,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity
-            android:name=".LoginActivity"
-            android:label="@string/title_activity_login" >
         </activity>
         <activity
             android:name=".HomeActivity"
@@ -47,17 +47,21 @@
             android:name=".SeleccionVisitaActivity"
             android:label="@string/title_activity_seleccion_visita" >
         </activity>
-        <!--<activity-->
-            <!--android:name=".ConfiguracionActivity"-->
-            <!--android:label="@string/title_activity_configuracion"-->
-            <!--android:parentActivityName=".HomeActivity" >-->
-            <!--<meta-data-->
-                <!--android:name="android.support.PARENT_ACTIVITY"-->
-                <!--android:value="com.fisei.visitapp.app.HomeActivity" />-->
-        <!--</activity>-->
+        <!-- <activity -->
+        <!-- android:name=".ConfiguracionActivity" -->
+        <!-- android:label="@string/title_activity_configuracion" -->
+        <!-- android:parentActivityName=".HomeActivity" > -->
+        <!-- <meta-data -->
+        <!-- android:name="android.support.PARENT_ACTIVITY" -->
+        <!-- android:value="com.fisei.visitapp.app.HomeActivity" /> -->
+        <!-- </activity> -->
         <activity
             android:name=".SettingsActivity"
-            android:label="@string/title_activity_configuracion">
+            android:label="@string/title_activity_configuracion" >
+        </activity>
+        <activity
+            android:name=".VisitaActivity"
+            android:label="@string/title_activity_visita" >
         </activity>
     </application>
 

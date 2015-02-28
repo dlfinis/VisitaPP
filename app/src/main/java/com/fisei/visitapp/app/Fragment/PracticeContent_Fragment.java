@@ -67,6 +67,7 @@ public class PracticeContent_Fragment extends Fragment {
             TextView txtEHorasPracticas = (TextView) getActivity().findViewById(R.id.txtEHorasPracticas);
             TextView txtENumPracticas = (TextView) getActivity().findViewById(R.id.txtENumPracticas);
 
+
             txtENombre.setText(est.getNombres());
             txtECedula.setText(codeCC);
             txtEEmail.setText(est.getEmail());

@@ -1,30 +1,38 @@
 package com.fisei.visitapp.app;
 
 import android.annotation.TargetApi;
+import android.app.Activity;
+import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.content.res.Configuration;
-import android.media.Ringtone;
-import android.media.RingtoneManager;
-import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
-import android.preference.PreferenceCategory;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
-import android.preference.RingtonePreference;
-import android.text.TextUtils;
 import android.util.Log;
-import android.widget.TextView;
-import com.fisei.visitapp.app.check.InternetCheck;
+import android.view.WindowManager;
+import android.widget.Toast;
+import com.fisei.visitapp.app.check.NetworkUtils;
+import com.fisei.visitapp.app.database.DatabaseManager;
 import com.fisei.visitapp.app.database.DatabaseManagerPGSQL;
+import com.fisei.visitapp.app.database.PgsqlDataAsyncTask;
+import org.postgresql.util.PSQLException;
 
 
+import javax.sql.ConnectionEvent;
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ExecutionException;
 
 /**
  * A {@link PreferenceActivity} that presents a set of application settings. On
@@ -45,15 +53,192 @@ public class SettingsActivity extends PreferenceActivity {
      * shown on tablets.
      */
     private static final boolean ALWAYS_SIMPLE_PREFS = false;
+    private ProgressDialog pDialog;
+    public static String DATOS="DATOS";
+    public static String SINCRONIZACION="SINCRONIZACION";
 
 
-    private SharedPreferences prefs;
+   final public Context ctx=this;
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
 
         setupSimplePreferencesScreen();
+
+    }
+
+
+    private String getSharedPreference(String prf)
+    {
+        Preference prefs = (Preference)findPreference(prf);
+        String value;
+        value= PreferenceManager.getDefaultSharedPreferences(prefs.getContext()).getString(prefs.getKey(), "000");
+        return value;
+    }
+
+    private Integer getIntegerSharedPreference(String prf)
+    {
+        Preference prefs = (Preference)findPreference(prf);
+        int value;
+        value= PreferenceManager.getDefaultSharedPreferences(prefs.getContext()).getInt(prefs.getKey(), 0);
+        return value;
+    }
+
+    private boolean isDatabaseAvaliable()
+    {
+        String url="";
+         boolean valor=false;
+        try {
+
+            url = String.format("jdbc:postgresql://%s:%d/%s",
+                    getSharedPreference("prefDireccion"),
+                    Integer.valueOf(getSharedPreference("prefPuerto")), "sppp");
+
+
+
+            valor = new AsyncTask<String, Void, Boolean>() {
+
+                @Override
+                protected Boolean doInBackground(String... url) {
+                    try {
+
+                        if (android.os.Build.VERSION.SDK_INT > 9) {
+                            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+                            StrictMode.setThreadPolicy(policy);
+                        }
+                        boolean isAlive=NetworkUtils.isHostReachable(
+                                getSharedPreference("prefDireccion"),
+                                Integer.valueOf(getSharedPreference("prefPuerto")),
+                                        100);
+
+
+                        if(isAlive) {
+
+
+                            Class.forName("org.postgresql.Driver");
+                            Connection conn = DriverManager.getConnection(url[0],
+                                    getSharedPreference("prefUsuarioBD"),
+                                    getSharedPreference("prefClaveBD"));
+
+                            conn.close();
+
+                            DatabaseManagerPGSQL.setDireccion(getSharedPreference("prefDireccion"));
+                            DatabaseManagerPGSQL.setPuerto(Integer.valueOf(getSharedPreference("prefPuerto")));
+                            DatabaseManagerPGSQL.setUsuario(getSharedPreference("prefUsuarioBD"));
+                            DatabaseManagerPGSQL.setClave(getSharedPreference("prefClaveBD"));
+
+                            DatabaseManagerPGSQL.getInstance();
+
+                            return true;
+
+                        }
+                        else {
+                            return false;
+                        }
+                    } catch (ClassNotFoundException e) {
+                        e.printStackTrace();
+                    }catch (PSQLException e) {
+                        e.printStackTrace();
+                    }catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+
+                    return false;
+                }
+            }.execute(url).get();
+            return false;
+
+        }
+        catch(NullPointerException e)
+        {
+
+        }
+        catch (Exception e)
+        {  e.printStackTrace();}
+
+        finally {
+            return valor;
+        }
+
+
+
+    }
+
+    private boolean isUserAvaliable(String ccResponsable,String claveResponsable) throws ExecutionException, InterruptedException {
+        PgsqlDataAsyncTask.UserCheck user = PgsqlDataAsyncTask.getInstance().getUserCheck(SettingsActivity.this);
+
+
+        Map<String, String> userMap = new HashMap<String, String>();
+        userMap.put("CCResponsable", ccResponsable);
+        userMap.put("ClaveResponsable", claveResponsable);
+
+        boolean result=user.execute(userMap).get();
+
+        return  result;
+
+    }
+
+    private boolean loadEstudiantesInformacion(ProgressDialog progressDialog) throws ExecutionException, InterruptedException {
+
+          PgsqlDataAsyncTask.TEstudianteInformacion tEstudianteInformacion =
+                PgsqlDataAsyncTask.getInstance().getTEstudianteInformacion(SettingsActivity.this);
+        tEstudianteInformacion.execute(getSharedPreference("prefCC"));
+
+        progressDialog.setProgress(25);
+        boolean result=tEstudianteInformacion.get();
+
+        return result;
+
+    }
+    private boolean loadPasantiaPracticas(ProgressDialog progressDialog) throws ExecutionException, InterruptedException {
+
+        PgsqlDataAsyncTask.TPasantiaPracticas tPasantiaPracticas =
+                PgsqlDataAsyncTask.getInstance().getTPasantiaPracticas(SettingsActivity.this);
+        tPasantiaPracticas.execute(getSharedPreference("prefCC"));
+
+        progressDialog.setProgress(50);
+        boolean result= tPasantiaPracticas.get();
+
+        return result;
+
+    }
+
+    private boolean saveVisitaPractica(ProgressDialog progressDialog) throws ExecutionException, InterruptedException {
+
+        PgsqlDataAsyncTask.TVisitaPracticaBD tVisitaPracticaBD =
+                PgsqlDataAsyncTask.getInstance().getTVisitaPracticaBD(SettingsActivity.this);
+        tVisitaPracticaBD.execute();
+
+        progressDialog.setProgress(100);
+        boolean result=tVisitaPracticaBD.get();
+
+        return result;
+
+    }
+    private boolean loadVisitaPractica(ProgressDialog progressDialog) throws ExecutionException, InterruptedException {
+
+        PgsqlDataAsyncTask.TVisitaPractica tVisitaPractica =
+                PgsqlDataAsyncTask.getInstance().getTVisitaPractica(SettingsActivity.this);
+        tVisitaPractica.execute(getSharedPreference("prefCC"));
+
+        progressDialog.setProgress(75);
+        boolean result= tVisitaPractica.get();
+
+        return result;
+
+    }
+
+    private boolean loadResponsableIngreso(ProgressDialog progressDialog) throws ExecutionException, InterruptedException {
+
+      PgsqlDataAsyncTask.TResponsableIngreso tResponsableIngreso =
+                PgsqlDataAsyncTask.getInstance().getTResponsableIngreso(SettingsActivity.this);
+        tResponsableIngreso.execute(getSharedPreference("prefCC"));
+
+        progressDialog.setProgress(100);
+        boolean result= tResponsableIngreso.get();
+
+        return result;
 
     }
 
@@ -78,36 +263,98 @@ public class SettingsActivity extends PreferenceActivity {
         sincronizacionPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             public boolean onPreferenceClick(Preference preference) {
 
-                String cc, clave;
-                cc = clave = "";
-
-                Preference prefCC =findPreference("prefCC");
-                Preference prefClave =findPreference("prefClave");
-
-                cc=
-                         PreferenceManager.getDefaultSharedPreferences(prefCC.getContext()).getString(prefCC.getKey(),"0000");
-
-                clave=
-                        PreferenceManager.getDefaultSharedPreferences(prefClave.getContext()).getString(prefClave.getKey(),"00aa");
-
-              if(cc!=null && clave!=null)
-              {
-
-                  if(InternetCheck.getInstance(getApplicationContext()).hasInternetConnection()) {
-
-                      Log.e("PrefSincronizacion", cc+" "+clave);
-//                      try {
-//                          DatabaseManagerPGSQL.getInstance().queryScalar("Select current_timestamp").toString();
-//                      } catch (SQLException e) {
-//                          e.printStackTrace();
-//                      }
-                  }
-              }
+                try {
 
 
-                 return  true;
+                    ProgressDialog progressDialog = new ProgressDialog(SettingsActivity.this);
+                    progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+                    progressDialog.setMessage("Sincronizando.... Espere");
+                    progressDialog.setCancelable(true);
+                    progressDialog.setMax(100);
+                    progressDialog.setProgress(0);
+                    String ccResponsable, claveResponsable;
+                    ccResponsable = claveResponsable = "";
 
+                    ccResponsable = getSharedPreference("prefCC");
+                    claveResponsable = getSharedPreference("prefClave");
+
+
+                    if (ccResponsable != null && claveResponsable != null) {
+                        if (NetworkUtils.isNetworkAvailable(SettingsActivity.this.getApplicationContext())) {
+
+
+                            if (isDatabaseAvaliable()) {
+
+                                try {
+                                    if (isUserAvaliable(ccResponsable, claveResponsable)) {
+
+//                                        Toast.makeText(SettingsActivity.this,
+//                                                "Sincronizacion Iniciada.", Toast.LENGTH_SHORT).show();
+
+                                        progressDialog.show();
+
+
+
+
+
+
+                                        loadEstudiantesInformacion(progressDialog);
+
+                                        loadPasantiaPracticas(progressDialog);
+
+                                        loadVisitaPractica(progressDialog);
+
+
+                                        loadResponsableIngreso(progressDialog);
+
+                                        saveVisitaPractica(progressDialog);
+
+
+
+
+                                            Toast.makeText(SettingsActivity.this,
+                                                "Sincronizacion Finalizada.", Toast.LENGTH_SHORT).show();
+                                        progressDialog.dismiss();
+                                        return true;
+                                    }
+                                }catch (ExecutionException ex)
+                                {
+                                    ex.printStackTrace();
+                                }
+                                catch (InterruptedException ex)
+                                {
+                                    ex.printStackTrace();
+                                }
+
+
+
+
+                                return true;
+                                
+                            } else {
+                                Toast.makeText(SettingsActivity.this,
+                                        "Conexión hacia BD invalida.Revise su información.", Toast.LENGTH_SHORT).show();
+
+                                return false;
+                            }
+
+
+                        } else {
+                            Toast.makeText(SettingsActivity.this, R.string.false_coneccion_wifi, Toast.LENGTH_SHORT).show();
+                            return false;
+                        }
+
+                    }
+                }catch (Exception e)
+                {
+                    e.printStackTrace();
+
+                }
+
+
+                return false;
             }
+
         });
 
 
@@ -222,7 +469,10 @@ public class SettingsActivity extends PreferenceActivity {
             // guidelines.
             bindPreferenceSummaryToValue(findPreference("prefCC"));
             bindPreferenceSummaryToValue(findPreference("prefClave"));
-            bindPreferenceSummaryToValue(findPreference("prefSincronizacion"));
+            bindPreferenceSummaryToValue(findPreference("prefDireccion"));
+//            bindPreferenceSummaryToValue(findPreference("prefPuerto"));
+            bindPreferenceSummaryToValue(findPreference("prefUsuarioBD"));
+            bindPreferenceSummaryToValue(findPreference("prefClaveBD"));
         }
     }
 

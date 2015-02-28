@@ -51,7 +51,7 @@ public class AdapterEstudiantesInformacion extends ArrayAdapter {
         cedula.setText(est.getCCEstudiante());
 
         TextView nombre=(TextView) item.findViewById(R.id.txtListNombre);
-        nombre.setText(est.getNombres()+" "+est.getApellidos());
+        nombre.setText(est.getNombres());
 
         return item;
     }

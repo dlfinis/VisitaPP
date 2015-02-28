@@ -4,18 +4,10 @@ package com.fisei.visitapp.app.database;
  * Created by diegoztc on 19/02/15.
  */
 
-import android.content.Context;
 import android.util.Log;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.sql.Statement;
+import org.postgresql.util.PSQLException;
 
-
-
-import java.sql.SQLException;
-import java.util.List;
+import java.sql.*;
 
 public class DatabaseManagerPGSQL {
 
@@ -23,12 +15,54 @@ public class DatabaseManagerPGSQL {
     public Connection conn;
     private Statement statement;
 
-    private static final String url = "jdbc:postgresql://192.168.56.1:5432/sppp";
-    private static final String user = "postgres";
-    private static final String pass = "postgres";
+    //private static  String direccion = "jdbc:postgresql://192.168.56.1:5432/";
+    private static  String direccion = "";
+    private static  String url = "jdbc:postgresql://%s:%d/%s";
+
+    private static  int puerto = 0;
+
+    private static  String bd = "sppp";
+    private static  String usuario = "postgres";
+    private static  String clave = "postgres";
 
 
-    static private DatabaseManagerPGSQL instance;
+
+
+    static private DatabaseManagerPGSQL instance=null;
+
+
+    public static void setDireccion(String direccion) {
+        DatabaseManagerPGSQL.direccion = direccion;
+    }
+
+
+    public static String getUrl() {
+        return String.format("jdbc:postgresql://%s:%d/%s",direccion,puerto,bd);
+    }
+
+    public static void setPuerto(int puerto) {
+        DatabaseManagerPGSQL.puerto = puerto;
+    }
+
+    public static void setBd(String bd) {
+        DatabaseManagerPGSQL.bd = bd;
+    }
+
+    public static void setUsuario(String usuario) {
+        DatabaseManagerPGSQL.usuario = usuario;
+    }
+
+    public static void setClave(String clave) {
+        DatabaseManagerPGSQL.clave = clave;
+    }
+
+    public static String getUsuario() {
+        return usuario;
+    }
+
+    public static String getClave() {
+        return clave;
+    }
 
     /**
      *
@@ -36,10 +70,27 @@ public class DatabaseManagerPGSQL {
      */
     static public DatabaseManagerPGSQL getInstance() {
         if ( instance == null ) {
+
             instance = new DatabaseManagerPGSQL();
         }
         return instance;
     }
+
+    public static void setInstance(DatabaseManagerPGSQL instance) {
+        DatabaseManagerPGSQL.instance = instance;
+    }
+
+    protected DatabaseManagerPGSQL() {
+        try {
+            Class.forName("org.postgresql.Driver");
+            conn = DriverManager.getConnection(getUrl(),getUsuario(),getClave());
+        }catch (Exception sqle) {
+            sqle.printStackTrace();
+
+        }
+    }
+
+
 
     /**
      *
@@ -48,7 +99,8 @@ public class DatabaseManagerPGSQL {
      * @throws SQLException
      */
     public ResultSet query(String query) throws SQLException{
-        statement = instance.conn.createStatement();
+        statement = instance.conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
+                ResultSet.CONCUR_UPDATABLE);
         ResultSet res = statement.executeQuery(query);
         return res;
     }
@@ -61,6 +113,28 @@ public class DatabaseManagerPGSQL {
     public int insert(String insertQuery) throws SQLException {
         statement = instance.conn.createStatement();
         int result = statement.executeUpdate(insertQuery);
+        return result;
+
+    }
+
+
+    /**
+     * @desc Method to getPreparedStatement
+     * @param query String
+     * @return boolean
+     * @throws SQLException
+     */
+    public PreparedStatement getPreparedStatement(String query ) throws SQLException {
+        return instance.conn.prepareStatement(query);
+    }
+    /**
+     * @desc Method to insert data to a table
+     * @param pst PreparedStatemenet The Insert query
+     * @return integer
+     * @throws SQLException
+     */
+    public int insertPrepared(PreparedStatement pst) throws SQLException {
+        int result = pst.executeUpdate();
         return result;
 
     }
@@ -79,16 +153,23 @@ public class DatabaseManagerPGSQL {
 
     }
 
-    private DatabaseManagerPGSQL() {
 
-        try {
-            Class.forName("org.postgresql.Driver");
-            conn = DriverManager.getConnection(url, user, pass);
-        }
-        catch (Exception sqle) {
-            sqle.printStackTrace();
-        }
+    /**
+     * @desc Method to get if exists somenthing
+     * @param selectQuery String The select query
+     * @return boolean
+     * @throws SQLException
+     */
+    public Boolean queryExits(String selectQuery) throws SQLException {
+        statement = instance.conn.createStatement();
+        ResultSet result = statement.executeQuery(selectQuery);
+        result.next();
+        return result.getBoolean(1);
+
     }
+
+
+
 
 
 
@@ -108,11 +189,12 @@ public class DatabaseManagerPGSQL {
 
 
 
+
     public void testDB() {
 
         try {
             Class.forName("org.postgresql.Driver");
-            Connection con = DriverManager.getConnection(url, user, pass);
+            Connection con = DriverManager.getConnection(direccion, usuario, clave);
             /* System.out.println("Database connection success"); */
 
             String result = "Database connection success\n";
@@ -135,6 +217,10 @@ public class DatabaseManagerPGSQL {
 
         }
 
+
+
     }
 
+
 }
+

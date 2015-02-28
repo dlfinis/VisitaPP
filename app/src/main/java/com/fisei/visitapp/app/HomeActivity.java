@@ -3,6 +3,7 @@ package com.fisei.visitapp.app;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.provider.ContactsContract;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,7 +13,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import com.fisei.visitapp.app.database.DatabaseManager;
+import com.fisei.visitapp.app.entity.ResponsableIngreso;
 
 
 public class HomeActivity extends ActionBarActivity {
@@ -22,6 +24,8 @@ public class HomeActivity extends ActionBarActivity {
     Button btnHEstudiante;
     Button btnHVisita;
     Button btnHSalir;
+
+    SharedPreferences sharedPrefs ;
 
     private static final int RESULT_SETTINGS = 1;
 
@@ -33,28 +37,25 @@ public class HomeActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-       // showUserSettings();
-        Intent iin = getIntent();
-        args = iin.getExtras();
+        DatabaseManager.init(this);
+        sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
+
+
 
         txtNombre = (TextView) findViewById(R.id.txtHNombre);
         btnHEstudiante = (Button) findViewById(R.id.btnHEstudiante);
         btnHVisita = (Button) findViewById(R.id.btnHVisita);
         btnHSalir = (Button) findViewById(R.id.btnHSalir);
 
-        if (args != null) {
-            txtNombre.setText(args.getString("nomCompletoResponsable"));
-            Log.e("codigo", args.getString("ccResponsable"));
-        }
+        showUserSettings();
+
 
         btnHEstudiante.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Estudiante...", Toast.LENGTH_LONG).show();
-
                 Intent practicasIntent = new Intent(HomeActivity.this, PracticeActivity.class);
                 if (args != null) {
-                    practicasIntent.putExtra("ccResponsable", args.getString("ccResponsable"));
+                    practicasIntent.putExtra("ccResponsable",sharedPrefs.getString("prefCC","00"));
 
                 }
 
@@ -67,7 +68,7 @@ public class HomeActivity extends ActionBarActivity {
 
             @Override
             public void onClick(View view) {
-                Intent seleccionIntent = new Intent(HomeActivity.this, SeleccionVisitaActivity.class);
+                Intent seleccionIntent = new Intent(HomeActivity.this, VisitaActivity.class);
                 startActivity(seleccionIntent);
             }
         });
@@ -77,11 +78,7 @@ public class HomeActivity extends ActionBarActivity {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.putExtra("EXIT", true);
-                startActivity(intent);
-                finish();
+                        finish();
             }
         });
 
@@ -116,7 +113,7 @@ public class HomeActivity extends ActionBarActivity {
 
         switch (requestCode) {
             case RESULT_SETTINGS:
-               // showUserSettings();
+                showUserSettings();
                 break;
 
         }
@@ -124,18 +121,28 @@ public class HomeActivity extends ActionBarActivity {
     }
 
     private void showUserSettings() {
-        SharedPreferences sharedPrefs = PreferenceManager
-                .getDefaultSharedPreferences(this);
 
-        StringBuilder builder = new StringBuilder();
+        if(sharedPrefs!=null) {
+            StringBuilder builder = new StringBuilder();
 
-        builder.append("\n CC: "
-                + sharedPrefs.getString("prefCC", "NULL"));
+            ResponsableIngreso responsableIngreso =
+                    DatabaseManager.getInstance().getResponsableIngreso(sharedPrefs.getString("prefCC", "00"));
 
-        builder.append("\n Clave:"
-                + sharedPrefs.getString("prefClave","NULL"));
-
-        Log.e("Mensaje",builder.toString());
+            if (responsableIngreso != null) {
+                txtNombre.setText(responsableIngreso.getNombres() + " " + responsableIngreso.getApellidos());
+                btnHEstudiante.setEnabled(true);
+                btnHVisita.setEnabled(true);
+            } else {
+                txtNombre.setText("Usuario");
+                btnHEstudiante.setEnabled(false);
+                btnHVisita.setEnabled(false);
+            }
+        }else
+        {
+            txtNombre.setText("Usuario");
+            btnHEstudiante.setEnabled(false);
+            btnHVisita.setEnabled(false);
+        }
 
     }
 }

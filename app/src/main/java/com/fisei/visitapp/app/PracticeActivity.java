@@ -1,6 +1,8 @@
 package com.fisei.visitapp.app;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import com.fisei.visitapp.app.Fragment.PracticeContent_Fragment;
@@ -9,16 +11,13 @@ import com.fisei.visitapp.app.Fragment.PracticeList_Fragment;
 
 public class PracticeActivity extends FragmentActivity implements PracticeList_Fragment.onEstudianteSelectedListener
 {
-    String ccResponsable="0705756187";
-   Bundle arg_cc;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_practice);
 
 
-        Intent iin= getIntent();
-        arg_cc = iin.getExtras();
 
         //args.putString("ccResponsable",ccResponsable);
         // Comprobamos si estamos usando la version con
@@ -36,6 +35,9 @@ public class PracticeActivity extends FragmentActivity implements PracticeList_F
     }
     @Override
     public void onEstudianteSelected(String ccEstudiante) {
+
+        SharedPreferences sharedPrefs = PreferenceManager
+                .getDefaultSharedPreferences(this);
         // TODO Auto-generated method stub
         // Comprobamos si tenemos disponible el Fragment de
         // contenido
@@ -50,9 +52,9 @@ public class PracticeActivity extends FragmentActivity implements PracticeList_F
             contFragment = new PracticeContent_Fragment();
             Bundle args = new Bundle();
 
-            if(arg_cc!=null){
-                args.putString("ccResponsable",arg_cc.getString("ccResponsable"));
-            }
+
+                args.putString("ccResponsable",sharedPrefs.getString("prefCC","00"));
+
         // Establecemos la posición que hemos elegido
             args.putString(PracticeContent_Fragment.CODECC, ccEstudiante);
             contFragment.setArguments(args);

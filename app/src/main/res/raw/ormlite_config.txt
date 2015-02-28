@@ -1,5 +1,5 @@
 #
-# generated on 2015/02/25 11:09:59
+# generated on 2015/02/27 05:16:59
 #
 # --table-start--
 dataClass=com.fisei.visitapp.app.entity.Test
@@ -46,6 +46,9 @@ fieldName=Sexo
 fieldName=Movil
 # --field-end--
 # --field-start--
+fieldName=Convencional
+# --field-end--
+# --field-start--
 fieldName=Email
 # --field-end--
 # --field-start--
@@ -74,18 +77,21 @@ columnName=CCResponsable
 # --table-end--
 #################################
 # --table-start--
-dataClass=com.fisei.visitapp.app.entity.Visita
+dataClass=com.fisei.visitapp.app.entity.VisitaPractica
 tableName=vw_visita_practica
 # --table-fields-start--
 # --field-start--
 fieldName=CodVisita
 columnName=CodVisita
 id=true
-generatedId=true
 # --field-end--
 # --field-start--
 fieldName=CodPractica
 columnName=CodPractica
+# --field-end--
+# --field-start--
+fieldName=CCResponsable
+columnName=CCResponsable
 # --field-end--
 # --field-start--
 fieldName=Observaciones
@@ -176,8 +182,8 @@ fieldName=CodPasantia
 columnName=CodPasantia
 # --field-end--
 # --field-start--
-fieldName=CodEst
-columnName=CodEst
+fieldName=CodEstudiante
+columnName=CodEstudiante
 # --field-end--
 # --field-start--
 fieldName=CodResponsable

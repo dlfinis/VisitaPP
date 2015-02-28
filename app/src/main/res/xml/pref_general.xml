@@ -9,10 +9,8 @@
         <EditTextPreference
                 android:key="prefCC"
                 android:title="@string/pref_cc"
-                android:defaultValue="@string/pref_default_cc"
                 android:selectAllOnFocus="true"
-                android:inputType="textCapWords"
-                android:capitalize="words"
+                android:inputType="number|textNoSuggestions"
                 android:singleLine="true"
                 android:maxLines="1"
                 android:maxLength="15"
@@ -21,9 +19,8 @@
         <EditTextPreference
                 android:key="prefClave"
                 android:title="@string/pref_clave"
-                android:defaultValue="@string/pref_default_clave"
                 android:selectAllOnFocus="true"
-                android:inputType="textVisiblePassword"
+                android:inputType="textPassword"
                 android:singleLine="true"
                 android:maxLines="1"
                 android:maxLength="4"
@@ -33,11 +30,59 @@
     </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/pref_titulo_datos">
+
+
+        <EditTextPreference
+                android:key="prefDireccion"
+                android:title="@string/pref_direccion"
+                android:defaultValue="@string/pref_default_direccion"
+                android:selectAllOnFocus="true"
+                android:inputType="number|textNoSuggestions"
+                android:digits="0123456789."
+                android:singleLine="true"
+                android:maxLines="1"
+                android:maxLength="15"
+                android:summary="@string/pref_summary_clave"/>
+
+        <EditTextPreference
+                android:key="prefPuerto"
+                android:title="@string/pref_puerto"
+                android:defaultValue="@string/pref_default_puerto"
+                android:selectAllOnFocus="true"
+                android:inputType="number"
+                android:singleLine="true"
+                android:maxLines="1"
+                android:maxLength="5"
+                android:summary="@string/pref_summary_clave"/>
+
+        <EditTextPreference
+                android:key="prefUsuarioBD"
+                android:title="@string/pref_usuarioBD"
+                android:defaultValue="@string/pref_default_usuarioBD"
+                android:selectAllOnFocus="true"
+                android:inputType="text|textNoSuggestions"
+                android:singleLine="true"
+                android:maxLines="1"
+                android:maxLength="15"
+                android:summary="@string/pref_summary_usuarioBD"/>
+
+        <EditTextPreference
+                android:key="prefClaveBD"
+                android:title="@string/pref_claveBD"
+                android:defaultValue="@string/pref_default_claveBD"
+                android:selectAllOnFocus="true"
+                android:inputType="text|textNoSuggestions"
+                android:singleLine="true"
+                android:maxLines="1"
+                android:maxLength="15"
+                android:summary="@string/pref_summary_claveBD"/>
+
         <Preference
                 android:id="@+id/prefSincronizacion"
                 android:key="prefSincronizacion"
                 android:summary="@string/pref_summary_sincronizacion"
-                android:title="@string/pref_sincronizacion" />
+                android:title="@string/pref_sincronizacion"
+                android:icon="@android:drawable/ic_menu_upload"/>
 
 
     </PreferenceCategory>

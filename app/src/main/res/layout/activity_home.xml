@@ -48,7 +48,7 @@
                 android:layout_marginBottom = "@dimen/padding_Medium"
                 android:textSize = "@dimen/font_size_normal"
                 android:textStyle = "bold"
-                />
+                android:enabled="false"/>
 
         <Button
                 style = "?android:attr/buttonStyleSmall"
@@ -60,7 +60,7 @@
                 android:layout_marginBottom = "@dimen/padding_Medium"
                 android:textSize = "@dimen/font_size_normal"
                 android:textStyle = "bold"
-                />
+                android:enabled="false"/>
 
         <Button
                 style = "?android:attr/buttonStyleSmall"
