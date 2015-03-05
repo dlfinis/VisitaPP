@@ -1,5 +1,5 @@
 # VisitaPP
-Aplicación móvil para el control delas visitas de practicas pre profesionales.
+Aplicación móvil para el control de las visitas de practicas pre profesionales.
 Utiliza sincronización bidireccional, implementacion de ORM-SQLite,conexión JDBC hacia PostgreSQL.
 Base de Datos:
   SQLite
